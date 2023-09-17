@@ -1,0 +1,19 @@
+.DarkMode {
+    border: none;
+    border-radius: 50%;
+    align-items: center;
+    background-color: transparent;
+
+    button {
+        cursor: pointer;
+        background-color: transparent;
+        padding: 5px;
+        border-radius: 50%;
+
+        svg {
+            display: block;
+            width: 35px;
+            height: 35px;
+        }
+    }
+}

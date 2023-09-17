@@ -1,0 +1,24 @@
+.activeLanguage {
+    background-color: var(--gray) !important;
+}
+
+.Localization {
+    box-shadow: var(--page-block-shadow);
+    margin-right: 20px;
+    background-color: var(--layout-color-hover);
+    border-radius: var(--border-radius);
+    button {
+        color: var(--invert-color);
+        padding: 10px;
+        font-size: 22px;
+
+        cursor: pointer;
+        background-color: transparent;
+        &:first-child {
+            border-radius: var(--border-radius) 0px 0px var(--border-radius);
+        }
+        &:last-child {
+            border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+        }
+    }
+}

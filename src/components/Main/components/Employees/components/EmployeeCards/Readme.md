@@ -1,0 +1,29 @@
+# **EmployeeCards (Employees)**
+
+CZ:
+
+1. Tento kód definuje komponentu React nazvanou `EmployeeCards`, která jako své rekvizity bere objekt stavu. Komponenta vykresluje seznam karet zaměstnanců, z nichž každá obsahuje informace o hotelu, ve kterém pracují, jejich jméno, pozici, odpracované hodiny, sazbu a vydělanou částku.
+2. Komponenta `EmployeeCards` používá háčky `useSelector` a `useNavigate` z balíčků React Redux a React Router. Háček `useSelector` načte hodnotu uživatelského jména z úložiště Redux a háček `useNavigate` poskytuje navigační funkci, která se používá k přechodu na novou stránku po kliknutí na kartu zaměstnance.
+3. Funkce `formatNumber` se používá k formátování čísel s oddělovači tisíců. Vezme číslo jako argument, převede ho na řetězec a pomocí regulárního výrazu přidá mezery mezi skupiny tří číslic. Funkce `NumberDisplay` je jednoduchá pomocná komponenta, která volá formatNumber na prop čísla a vykresluje výsledek jako rozsah.
+4. Komponenta `EmployeeCards` používá podmíněné vykreslování k zobrazení seznamu karet zaměstnanců nebo zprávy "`žádné položky`", pokud nejsou žádné položky k zobrazení. Pokud je prop state.item pravdivý, komponenta iteruje pole Locations objektu položky a vykreslí samostatnou kartu pro každé umístění. Pro každé umístění komponenta iteruje přes pole zaměstnanců a vykresluje samostatnou kartu pro každého zaměstnance.
+5. Každá zaměstnanecká karta obsahuje jeho jméno, pozici, odpracované hodiny, sazbu a vydělanou částku, stejně jako ikony z knihovny reakčních ikon. Komponenta `NumberDisplay` se používá k formátování hodnot `hodin`, `sazby` a `množství` s oddělovači tisíců. Funkce `onClick` pro každou kartu zaměstnance používá háček `useNavigate` k navigaci na novou stránku se jménem zaměstnance jako parametrem v URL a předává rekvizity state.data a state.item jako stav na novou stránku.
+
+---
+
+EN:
+
+1. This code defines a React component called `EmployeeCards` which takes a `state` object as its props. The component renders a list of employee cards, each of which contains information about the hotel they work at, their name, position, hours worked, rate, and amount earned.
+2. The `EmployeeCards` component uses the `useSelector` and `useNavigate` hooks from the React Redux and React Router packages respectively. The `useSelector` hook retrieves the `username` value from the Redux store, and the `useNavigate` hook provides a navigation function that is used to navigate to a new page when an employee card is clicked.
+3. The `formatNumber` function is used to format numbers with thousands separators. It takes a number as an argument, converts it to a string, and uses a regular expression to add spaces between groups of three digits. The `NumberDisplay` function is a simple helper component that calls `formatNumber` on the `number` prop and renders the result as a span.
+4. The `EmployeeCards` component uses conditional rendering to display either the list of employee cards or a "no items" message if there are no items to display. If the `state.item` prop is truthy, the component iterates over the `locations` array of the `item` object and renders a separate card for each location. For each location, the component iterates over the `employees` array and renders a separate card for each employee.
+5. Each employee card contains their name, position, hours worked, rate, and amount earned, as well as icons from the `react-icons` library. The `NumberDisplay` component is used to format the `hours`, `rate`, and `amount` values with thousands separators. The `onClick` function for each employee card uses the `useNavigate` hook to navigate to a new page with the employee's name as a parameter in the URL, and passes the `state.data` and `state.item` props as state to the new page.
+
+---
+
+RU:
+
+1. Этот код определяет компонент React под названием `EmployeeCards`, который принимает объект состояния в качестве реквизита. Компонент отображает список карточек сотрудников, каждая из которых содержит информацию об отеле, в котором они работают, их имя, должность, отработанные часы, ставку и сумму заработка.
+2. Компонент `EmployeeCards` использует хуки `useSelector` и `useNavigate` из пакетов React Redux и React Router соответственно. Хук `useSelector` извлекает значение имени пользователя из хранилища Redux, а хук `useNavigate` предоставляет функцию навигации, которая используется для перехода на новую страницу при нажатии на карточку сотрудника.
+3. Функция `formatNumber` используется для форматирования чисел с разделителями тысяч. Он принимает число в качестве аргумента, преобразует его в строку и использует регулярное выражение для добавления пробелов между группами из трех цифр. Функция `NumberDisplay` — это простой вспомогательный компонент, который вызывает `formatNumber` для свойства number и отображает результат в виде интервала.
+4. Компонент `EmployeeCards` использует условную визуализацию для отображения либо списка карточек сотрудников, либо сообщения «нет элементов», если нет элементов для отображения. Если свойство `state.item` соответствует действительности, компонент выполняет итерацию по массиву местоположений объекта элемента и отображает отдельную карту для каждого местоположения. Для каждого местоположения компонент выполняет итерацию по массиву сотрудников и отображает отдельную карточку для каждого сотрудника.
+5. Каждая карточка сотрудника содержит их имя, должность, отработанные часы, ставку и заработанную сумму, а также значки из библиотеки react-icons. Компонент `NumberDisplay` используется для форматирования значений часов, ставок и сумм с разделителями тысяч. Функция `onClick` для каждой карточки сотрудника использует хук `useNavigate` для перехода на новую страницу с именем сотрудника в качестве параметра в URL-адресе и передает реквизиты `state.data` и `state.item` в качестве состояния на новую страницу.

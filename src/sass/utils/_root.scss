@@ -1,0 +1,73 @@
+:root {
+    --body-bg-color: #f2f2f2;
+    --login-bg-color: #c6c2c2d5;
+    --body-bg-color-dark: #141414;
+    --body-bg-color-dark-hover: #4b484f;
+    --additional-bg-color: #d7dadc;
+    --white-color: #fff;
+    --black-color: #222222;
+    --blured: blur(10px);
+    --blured-invert: blur(0px);
+    --border-radius: 8px;
+    --height40: 40px;
+    --layout-invert: invert(100%);
+    --layout-reinvert: invert(0);
+    --dropdown-background-light: #65646400;
+    --dropdown-background-light-hover: #d3d3d399;
+    --dropdown-background-dark: #7c7c7c99;
+    --dropdown-background-dark-hover: #222222;
+    --preloader-light-bg: #d7dadc;
+    --preloader-dark-bg: #222222;
+    --transparent-color: rgba(255, 255, 255, 0);
+    --link-hover-light: #dc7575;
+    --link-hover-dark: #dc7575;
+    --gray_light: #b7b7b7;
+    --gray_dark: #424242;
+    --separator_common-light: var(--gray_light);
+    --separator_common-dark: var(--gray_dark);
+    --thin-border: 1px;
+    --grin-light: #66e390;
+    --grin-dark: #607f78;
+}
+
+body.light {
+    --search-input-bg: var(--additional-bg-color);
+    --green: var(--grin-light);
+    --gray: var(--gray_light);
+    --link-hover: var(--link-hover-light);
+    --blur: var(--blured-invert);
+    --bg-color: var(--additional-bg-color);
+    --invert-color: var(--black-color);
+    --reinver-color: var(--white-color);
+    --background-color: var(--body-bg-color);
+    --layout-color: var(--black-color);
+    --layout-color-hover: var(--additional-bg-color);
+    --img-invert: var(--layout-reinvert);
+    --search-bg-color: var(--body-bg-color);
+    --search-bg-hover: var(--white-color);
+    --dropdown-invert: var(--dropdown-background-light);
+    --dropdown-invert-hover: var(--dropdown-background-light-hover);
+    --preloader-bg: var(--preloader-light-bg);
+    --page-block-shadow: 0 0 0 var(--thin-border) var(--separator_common-light);
+}
+
+body.dark {
+    --search-input-bg: var(--black-color);
+    --green: var(--grin-dark);
+    --gray: var(--gray_dark);
+    --link-hover: var(--link-hover-dark);
+    --blur: var(--blured);
+    --bg-color: var(--black-color);
+    --invert-color: var(--additional-bg-color);
+    --reinver-color: var(--black-color);
+    --background-color: var(--body-bg-color-dark);
+    --layout-color: var(--additional-bg-color);
+    --layout-color-hover: var(--black-color);
+    --img-invert: var(--layout-invert);
+    --search-bg-color: var(--body-bg-color-dark);
+    --search-bg-hover: var(--body-bg-color-dark-hover);
+    --dropdown-invert: var(--dropdown-background-dark);
+    --dropdown-invert-hover: var(--dropdown-background-dark-hover);
+    --preloader-bg: var(--preloader-dark-bg);
+    --page-block-shadow: 0 0 0 var(--thin-border) var(--separator_common-dark);
+}

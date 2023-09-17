@@ -1,0 +1,29 @@
+.AlertSection {
+    ul {
+        li {
+            display: flex;
+            align-items: center;
+            padding: 3px;
+            span {
+                font-size: 18px;
+                margin-left: 10px;
+            }
+            svg {
+                color: #d7dadc;
+            }
+        }
+    }
+}
+
+.Status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    padding: 10px;
+    min-width: 196px;
+    color: #d7dadc;
+    height: 70px;
+    border-radius: var(--border-radius);
+    margin: 0px 0px 10px 10px;
+}

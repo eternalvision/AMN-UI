@@ -1,0 +1,73 @@
+@import "./components/Logo";
+@import "./components/Dropdown";
+@import "./components/DarkMode";
+@import "./components/Localization";
+
+.Header {
+    border-radius: var(--border-radius);
+    margin: 15px;
+}
+
+.Menu-list {
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--black-color);
+    align-items: center;
+    li {
+        z-index: 10;
+        &:first-child {
+            padding-top: 5px;
+        }
+    }
+    position: relative;
+}
+
+form {
+    position: relative;
+    margin: 0 auto;
+}
+
+.Central-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Right-header-content {
+    display: flex;
+
+    section {
+        display: flex;
+        justify-content: space-between;
+        &:last-child {
+            border: none;
+            span {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.icoProfile {
+    width: 24px;
+    height: 24px;
+}
+
+.activeList {
+    background-color: var(--layout-color-hover) !important;
+    box-shadow: var(--page-block-shadow);
+}
+
+.userName {
+    background-color: var(--transparent) !important;
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+.finance-td {
+    input {
+        font-size: 16px;
+    }
+}

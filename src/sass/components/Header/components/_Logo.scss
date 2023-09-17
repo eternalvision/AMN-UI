@@ -1,0 +1,17 @@
+.Logo {
+    cursor: pointer;
+    background-color: var(--layout-color-hover);
+    border-radius: var(--border-radius);
+    box-shadow: var(--page-block-shadow);
+    padding: 10px;
+    p {
+        line-height: normal;
+        border-radius: var(--border-radius);
+        font-family: "ODB", sans-serif !important;
+        font-size: 27px;
+        color: var(--layout-color);
+        span {
+            font-family: "ODB", sans-serif !important;
+        }
+    }
+}

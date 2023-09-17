@@ -1,0 +1,335 @@
+tbody {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    display: flex;
+    justify-content: center;
+    tr {
+        &:first-child {
+            td {
+                border-top: none;
+            }
+        }
+    }
+}
+
+td {
+    border: 1px solid var(--gray);
+    input {
+        background-color: var(--background-color);
+        color: var(--layout-color);
+        outline: none;
+        border: none;
+        padding: 10px;
+        &:active,
+        &:focus-visible {
+            border: none;
+            background-color: var(--layout-color) !important;
+            color: var(--reinver-color);
+        }
+    }
+}
+
+thead {
+    tr {
+        td {
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.Finance-Table__container {
+    ul {
+        padding-left: 0px !important;
+        padding-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.CategoryHotel {
+    display: block !important;
+    text-align: center !important;
+}
+
+.All-Sum {
+    text-align: center;
+}
+
+.Span-DontEdit,
+.Employee-Table,
+.Finance-td input,
+.Finance-td,
+.Employee-Pozition__tr td {
+    width: 148.2px;
+    height: 40px;
+}
+
+.Finance-td {
+    height: 40px;
+    text-align: center;
+    span {
+        font-weight: bold;
+        color: var(--layout-color);
+    }
+    input {
+        text-align: right;
+        font-weight: bold;
+    }
+}
+
+.Fin-Sums {
+    text-align: right;
+}
+
+.financeCount-All {
+    background-color: var(--bg-color);
+    border: 1px solid var(--gray);
+    th {
+        border: 1px solid var(--gray);
+    }
+}
+
+.financeCount-All__Obj {
+    background-color: var(--bg-color);
+    border: 1px solid var(--gray);
+    th {
+        border: 1px solid var(--gray);
+    }
+}
+
+.Category-Employee__Centred {
+    font-weight: bold;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.CategoryEmployeeName {
+    color: var(--layout-color);
+    text-align: left;
+    font-size: 15px;
+    margin-right: 50px;
+}
+
+.CategoryHotel {
+    padding: 5px !important;
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.additionCategory {
+    color: var(--layout-color);
+    font-weight: bold;
+}
+
+.Employee-Table {
+    padding: 2px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    span {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.financeHead {
+    position: sticky;
+    top: 0;
+}
+
+.financeHeaders {
+    ul {
+        border-top: 0px;
+        color: #222222;
+        font-weight: normal;
+        background-color: var(--green);
+        &:first-child {
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+        &:nth-child(2) {
+            height: 70px !important;
+        }
+        li {
+            justify-content: center;
+            word-wrap: break-word;
+            align-items: center;
+            display: flex;
+            &:nth-child(1) {
+                padding: 2px;
+            }
+        }
+    }
+}
+
+.Finance-Headers__Amount {
+    display: flex !important;
+    height: 40px !important;
+    background-color: var(--bg-color) !important;
+    li {
+        width: 151.05px !important;
+    }
+}
+
+.Employee-Table span {
+    font-size: 15px;
+    color: var(--layout-color);
+}
+
+.financeCategory {
+    background-color: var(--bg-color);
+    th {
+        color: var(--layout-color);
+        font-size: 20px;
+        font-weight: normal;
+    }
+}
+
+.Finance-headers {
+    span {
+        width: 110px;
+    }
+}
+
+.financeCategory__item {
+    font-size: 20px;
+    background-color: var(--bg-color);
+    border: none;
+
+    span {
+        color: var(--layout-color);
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.tableBtn {
+    margin: 2px;
+    color: var(--reinver-color);
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: var(--layout-color);
+    padding: 0px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    svg {
+        color: var(--reinver-color);
+    }
+}
+
+.Search-inputs {
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    .Search-inputs-block {
+        margin: 0 auto;
+        ul {
+            li {
+                &:first-child,
+                &:nth-child(2) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.Finance-Headers__Amount {
+    background-color: #5ac47d !important;
+}
+
+.Employee-Pozition__tr {
+    background-color: #5babb6 !important;
+}
+
+.Span-DontEdit {
+    background-color: var(--background-color);
+    color: var(--layout-color);
+    outline: none;
+    border: none;
+    display: block;
+    height: 40px;
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.Worker-search-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    li {
+        display: flex;
+        flex-direction: column;
+        label {
+            margin-left: 5px;
+            color: var(--layout-color);
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            span {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+.Worker-Input__Search {
+    height: 40px;
+    width: 200px;
+    padding: 0px 0px 0px 10px;
+    background-color: var(--search-input-bg);
+    color: var(--layout-color);
+    outline: none;
+    border: none;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gray);
+
+    &:active,
+    &:focus-visible {
+        border: none;
+        background-color: var(--layout-color) !important;
+        color: var(--reinver-color);
+    }
+}
+
+.Tables {
+    display: flex !important;
+    flex-direction: column;
+    margin-bottom: 60px;
+    li {
+        &:first-child {
+            position: sticky;
+            top: -5px;
+        }
+    }
+}
+
+.Employee-Pozition__Block {
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    span {
+        text-align: center;
+    }
+}

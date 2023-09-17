@@ -1,0 +1,47 @@
+.Dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    background-color: var(--layout-color-hover);
+    border-radius: var(--border-radius);
+    box-shadow: var(--page-block-shadow);
+    position: relative;
+    margin-left: 20px;
+    button {
+        cursor: pointer;
+        font-size: 25px;
+
+        color: var(--invert-color);
+        background-color: var(--layout-color-hover);
+        border-radius: var(--border-radius);
+        box-shadow: var(--page-block-shadow);
+        padding: 10px 20px;
+    }
+    ul {
+        background-color: var(--layout-color-hover);
+        border-radius: var(--border-radius);
+        box-shadow: var(--page-block-shadow);
+        top: 55px;
+        left: 0px;
+        position: absolute;
+        padding: 0px 5px 5px 5px;
+        li {
+            font-size: 22px;
+            border-radius: var(--border-radius);
+            a {
+                padding: 10px;
+                color: var(--invert-color);
+                display: flex;
+                align-items: center;
+                span {
+                    margin: 0px 15px;
+                }
+                &:hover {
+                    background-color: var(--gray) !important;
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--page-block-shadow);
+                }
+            }
+        }
+    }
+}

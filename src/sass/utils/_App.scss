@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+*,
+:after,
+:before {
+    border: 0 solid #d9d9e3;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    flex-grow: 1;
+    height: calc(100% - 100px);
+}
+
+p {
+    line-height: normal;
+}
+
+.PlaceholderLoading {
+    border-radius: var(--border-radius) !important;
+}
+
+body {
+    overflow: hidden;
+    background: var(--background-color) no-repeat;
+    counter-reset: katexEqnNo mmlEqnNo;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--layout-color) !important;
+}
+
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+input:not(:placeholder-shown):invalid {
+    background-color: red;
+}
+
+button {
+    border: none;
+}
+
+svg {
+    color: var(--layout-color);
+    min-width: 20px;
+    min-height: 20px;
+}
+
+.Tailspin {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    place-items: center;
+    overflow: auto;
+}
+
+body {
+    &::-webkit-scrollbar {
+        width: 12px;
+        background: rgba(255, 255, 255, 0) !important;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #222222 !important;
+        border-radius: 0px !important;
+    }
+
+    &::-webkit-scrollbar-button:vertical:start:decrement {
+        display: none !important;
+    }
+
+    &::-webkit-scrollbar-button:vertical:end:increment {
+        display: none !important;
+    }
+}
+
+.activeNoneClass {
+    display: none;
+}
+
+::-moz-selection {
+    background-color: var(--layout-color);
+    color: var(--bg-color);
+}
+::selection {
+    background-color: var(--layout-color);
+    color: var(--bg-color);
+}
+
+.Section-custom-loader {
+    // margin-top: 300px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    div {
+        display: inline-block !important;
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none !important;
+}
