@@ -151,6 +151,66 @@ body::-webkit-scrollbar-button:vertical:end:increment {
   display: none !important;
 }
 
+.tabulator {
+  border: none;
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  border-radius: var(--border-radius);
+}
+.tabulator .tabulator-header .tabulator-col {
+  white-space: normal !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.tabulator .tabulator-col-resize-handle {
+  height: 100% !important;
+  margin: auto;
+  width: 2px;
+}
+.tabulator .tabulator-cell,
+.tabulator .tabulator-col-title {
+  font-size: 19px;
+}
+.tabulator .tabulator-header-filter {
+  padding: 0px 5px;
+}
+.tabulator .tabulator-header-filter input {
+  padding: 10px !important;
+  border-radius: var(--border-radius);
+  font-size: 20px;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable .tabulator-col-title {
+  padding: 0px;
+  text-align: center;
+}
+.tabulator .tabulator-col-sorter {
+  display: none !important;
+}
+
+.word-wrap,
+.tabulator-col-title {
+  white-space: normal !important;
+}
+
+.tabulator-row .tabulator-cell {
+  padding: 5px;
+}
+.tabulator-row.tabulator-selectable:hover {
+  background-color: #cecece;
+}
+.tabulator-row .tabulator-cell.tabulator-editing {
+  text-align: center;
+  background-color: #a0a0a0;
+  padding: 10px;
+  border: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tabulator-row.tabulator-selectable:hover {
+    background-color: #cecece;
+  }
+}
 :root {
   --body-bg-color: #f2f2f2;
   --login-bg-color: #c6c2c2d5;
@@ -620,17 +680,32 @@ form {
 
 .Employee-category {
   margin: 5px 0px 10px 5px;
-  color: var(--reinver-color) !important;
+  color: var(--layout-color) !important;
   font-size: 22px;
   padding: 10px;
   text-align: center;
   border-radius: var(--border-radius);
-  background-color: var(--layout-color);
+  background-color: var(--bg-color);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  z-index: 10;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Employee-category span:first-child {
+  margin-right: 5px;
+}
+.Employee-category span:last-child {
+  padding: 5px;
+  background-color: var(--search-bg-color);
+  color: var(--layout-color);
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
 }
 
 .Employee-category__amount {

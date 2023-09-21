@@ -9,6 +9,7 @@ import { Helpers } from "./helpers/Helpers";
 import { Hooks } from "./hooks/Hooks";
 
 import "normalize.css";
+import "tabulator-tables/dist/css/tabulator.min.css";
 import "./css/index.min.css";
 
 const { LanguageProvider, useLanguage, DarkModeProvider, useDarkMode } =

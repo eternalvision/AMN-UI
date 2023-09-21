@@ -133,3 +133,78 @@ body {
     visibility: hidden !important;
     display: none !important;
 }
+
+.tabulator {
+    border: none;
+    box-shadow: var(--page-block-shadow);
+    border-radius: var(--border-radius);
+
+    .tabulator-header {
+        .tabulator-col {
+            white-space: normal !important;
+            justify-content: center;
+        }
+    }
+
+    .tabulator-col-resize-handle {
+        height: 100% !important;
+        margin: auto;
+        width: 2px;
+    }
+
+    .tabulator-cell,
+    .tabulator-col-title {
+        font-size: 19px;
+    }
+
+    .tabulator-header-filter {
+        padding: 0px 5px;
+
+        input {
+            padding: 10px !important;
+            border-radius: var(--border-radius);
+            font-size: 20px;
+        }
+    }
+
+    .tabulator-header {
+        .tabulator-col.tabulator-sortable {
+            .tabulator-col-title {
+                padding: 0px;
+                text-align: center;
+            }
+        }
+    }
+
+    .tabulator-col-sorter {
+        display: none !important;
+    }
+}
+
+.word-wrap,
+.tabulator-col-title {
+    white-space: normal !important;
+}
+
+.tabulator-row {
+    .tabulator-cell {
+        padding: 5px;
+    }
+
+    &.tabulator-selectable:hover {
+        background-color: #cecece;
+    }
+
+    .tabulator-cell.tabulator-editing {
+        text-align: center;
+        background-color: #a0a0a0;
+        padding: 10px;
+        border: none;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .tabulator-row.tabulator-selectable:hover {
+        background-color: #cecece;
+    }
+}

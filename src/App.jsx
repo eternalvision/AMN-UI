@@ -17,6 +17,7 @@ export const App = ({
     useFetchData,
     FilteredData,
     useCurrentDate,
+    Loader,
 }) => {
     useDisableEvents();
     return (
@@ -38,6 +39,7 @@ export const App = ({
                 FilteredData={FilteredData}
                 useCurrentDate={useCurrentDate}
                 NumberFormatter={NumberFormatter}
+                Loader={Loader}
             />
         </>
     );

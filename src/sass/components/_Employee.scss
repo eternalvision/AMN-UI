@@ -142,15 +142,29 @@
 
 .Employee-category {
     margin: 5px 0px 10px 5px;
-    color: var(--reinver-color) !important;
+    color: var(--layout-color) !important;
     font-size: 22px;
     padding: 10px;
     text-align: center;
     border-radius: var(--border-radius);
-    background-color: var(--layout-color);
+    background-color: var(--bg-color);
+    box-shadow: var(--page-block-shadow);
     cursor: pointer;
     display: flex;
-    z-index: 10;
+    align-items: center;
+
+    span {
+        &:first-child {
+            margin-right: 5px;
+        }
+        &:last-child {
+            padding: 5px;
+            background-color: var(--search-bg-color);
+            color: var(--layout-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--page-block-shadow);
+        }
+    }
 }
 
 .Employee-category__amount {

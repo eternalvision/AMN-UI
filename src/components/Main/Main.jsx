@@ -10,6 +10,7 @@ export const Main = ({
     FilteredData,
     useCurrentDate,
     NumberFormatter,
+    Loader,
 }) => {
     const { selectedLang } = useLanguage();
     const username = "eternalvision";
@@ -33,6 +34,7 @@ export const Main = ({
                         FilteredData={FilteredData}
                         useCurrentDate={useCurrentDate}
                         NumberFormatter={NumberFormatter}
+                        Loader={Loader}
                     />
                 </section>
             </main>

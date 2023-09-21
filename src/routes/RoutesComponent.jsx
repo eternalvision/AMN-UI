@@ -10,6 +10,7 @@ export const RoutesComponent = ({
     FilteredData,
     useCurrentDate,
     NumberFormatter,
+    Loader,
 }) => {
     const { Computational, Documentation, Employees, Profile, Settings } =
         MainComponents;
@@ -25,6 +26,7 @@ export const RoutesComponent = ({
                         LanguageSets={LanguageSets}
                         selectedLang={selectedLang}
                         username={username}
+                        Loader={Loader}
                     />
                 }
             />
@@ -36,6 +38,7 @@ export const RoutesComponent = ({
                         LanguageSets={LanguageSets}
                         selectedLang={selectedLang}
                         username={username}
+                        Loader={Loader}
                     />
                 }
             />
@@ -47,6 +50,8 @@ export const RoutesComponent = ({
                         LanguageSets={LanguageSets}
                         selectedLang={selectedLang}
                         username={username}
+                        NumberFormatter={NumberFormatter}
+                        Loader={Loader}
                     />
                 }
             />
@@ -62,6 +67,7 @@ export const RoutesComponent = ({
                         FilteredData={FilteredData}
                         useCurrentDate={useCurrentDate}
                         NumberFormatter={NumberFormatter}
+                        Loader={Loader}
                     />
                 }
             />
@@ -72,6 +78,7 @@ export const RoutesComponent = ({
                         GetLogo={GetLogo}
                         LanguageSets={LanguageSets}
                         selectedLang={selectedLang}
+                        Loader={Loader}
                     />
                 }
             />

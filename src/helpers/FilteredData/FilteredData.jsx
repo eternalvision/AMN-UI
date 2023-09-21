@@ -1,36 +1,24 @@
 export const FilteredData = ({ items }) => {
-    if (items) {
-        const Employees = items.units.map((unit) => {
-            const hotelData = unit.locations.map((location) => {
-                const positions = location.employees.reduce((acc, employee) => {
-                    if (!acc[employee.position]) {
-                        acc[employee.position] = [];
-                    }
-                    acc[employee.position].push(employee);
+    if (!items) return;
+
+    const Employees = items.units.map((unit) => ({
+        unitName: unit.name,
+        amount: unit.amount,
+        hotels: unit.locations.map((location) => ({
+            hotelAmount: location.amount,
+            hotelName: location.name,
+            positions: Object.entries(
+                location.employees.reduce((acc, employee) => {
+                    (acc[employee.position] =
+                        acc[employee.position] || []).push(employee);
                     return acc;
-                }, {});
+                }, {})
+            ).map(([positionName, employees]) => ({
+                positionName,
+                employees,
+            })),
+        })),
+    }));
 
-                const positionsArray = Object.entries(positions).map(
-                    ([positionName, employees]) => ({
-                        positionName,
-                        employees,
-                    })
-                );
-
-                return {
-                    hotelAmount: location.amount,
-                    hotelName: location.name,
-                    positions: positionsArray,
-                };
-            });
-
-            return {
-                unitName: unit.name,
-                amount: unit.amount,
-                hotels: hotelData,
-            };
-        });
-
-        return { Termin: items.term, Employees };
-    }
+    return { Termin: items.term, Employees };
 };
