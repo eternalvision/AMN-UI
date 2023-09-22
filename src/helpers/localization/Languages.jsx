@@ -358,7 +358,7 @@ export const Languages = {
                     headerFilter: "input",
                 },
                 {
-                    filed: "position",
+                    field: "position",
                     title: "Position",
                     width: 110,
                     headerFilter: "input",
@@ -431,7 +431,7 @@ export const Languages = {
                     headerFilter: "input",
                 },
                 {
-                    filed: "position",
+                    field: "position",
                     title: "Позиція",
                     width: 110,
                     headerFilter: "input",
@@ -504,7 +504,7 @@ export const Languages = {
                     headerFilter: "input",
                 },
                 {
-                    filed: "position",
+                    field: "position",
                     title: "Позиция",
                     width: 110,
                     headerFilter: "input",
