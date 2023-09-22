@@ -105,12 +105,35 @@ export const Table = ({
     const tableInstance = useRef(null);
 
     const columnsWithWrap = useMemo(() => {
+        const formatNumber = (number) => {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        };
+
         return LanguageSets.TableInterfaceElements()[selectedLang].map(
-            (column) => ({
-                ...column,
-                cssClass: "word-wrap",
-                cellEdited: cellEdited,
-            })
+            (column) => {
+                if (
+                    column.field === "hours" ||
+                    column.field === "rate" ||
+                    column.field === "amount" ||
+                    column.field === "total_internal_costs" ||
+                    column.field ===
+                        "internal_costs_according_to_the_formula" ||
+                    column.field === "difference_fact_formula"
+                ) {
+                    return {
+                        ...column,
+                        cssClass: "word-wrap",
+                        cellEdited: cellEdited,
+                        formatter: (cell) => formatNumber(cell.getValue()),
+                    };
+                }
+
+                return {
+                    ...column,
+                    cssClass: "word-wrap",
+                    cellEdited: cellEdited,
+                };
+            }
         );
     }, [LanguageSets, selectedLang, cellEdited]);
 
@@ -118,6 +141,7 @@ export const Table = ({
         Hotels,
         UnitName,
     });
+
     useEffect(() => {
         const currentTableRef = tableRef.current;
 
@@ -125,6 +149,10 @@ export const Table = ({
             LanguageSets.TableInterfaceElementsGroup()[selectedLang][0];
 
         const { workersTitle, totalAmountText } = TableInterfaceElementsGroup;
+
+        const formatNumber = (number) => {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        };
 
         if (currentTableRef) {
             tableInstance.current = new Tabulator(currentTableRef, {
@@ -139,8 +167,10 @@ export const Table = ({
                         totalAmount += item.amount;
                     });
 
-                    return `<b class="HotelTitle">${value}</b> <span class="HotelWorkers" style='margin-left:10px;'>(${count} ${workersTitle})</span>
-                        <span class="HotelTotalAmount" style='margin-left:10px;'>${totalAmountText}: ${totalAmount}</span>`;
+                    const formattedTotalAmount = formatNumber(totalAmount);
+
+                    return `<b class="HotelTitle">${value}</b> <span class="HotelWorkers" style='margin-left:50px;'>( <b style='color:#333'>${count}</b> ${workersTitle} )</span>
+                    <span class="HotelTotalAmount" style='margin-left:50px;'>${totalAmountText}: <b style='color:#333'>${formattedTotalAmount}</b></span>`;
                 },
             });
         }
