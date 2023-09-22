@@ -32,6 +32,7 @@ export const App = ({
             />
             <Main
                 RoutesComponent={RoutesComponent}
+                useLocalStorageState={useLocalStorageState}
                 LanguageSets={LanguageSets}
                 useLanguage={useLanguage}
                 GetLogo={GetLogo}

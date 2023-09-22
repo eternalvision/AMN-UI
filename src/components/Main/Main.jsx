@@ -11,9 +11,11 @@ export const Main = ({
     useCurrentDate,
     NumberFormatter,
     Loader,
+    useLocalStorageState,
 }) => {
     const { selectedLang } = useLanguage();
     const username = "eternalvision";
+
     return (
         <>
             <main className="Main">
@@ -21,7 +23,7 @@ export const Main = ({
                     GetLogo={GetLogo}
                     LanguageSets={LanguageSets}
                     selectedLang={selectedLang}
-                    username={username}
+                    Username={username}
                 />
                 <section className="Rear-block">
                     <RoutesComponent
@@ -35,6 +37,7 @@ export const Main = ({
                         useCurrentDate={useCurrentDate}
                         NumberFormatter={NumberFormatter}
                         Loader={Loader}
+                        useLocalStorageState={useLocalStorageState}
                     />
                 </section>
             </main>

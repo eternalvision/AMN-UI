@@ -192,7 +192,7 @@ body {
     }
 
     &.tabulator-selectable:hover {
-        background-color: #cecece;
+        background-color: #d8d8d8;
     }
 
     .tabulator-cell.tabulator-editing {
@@ -205,6 +205,18 @@ body {
 
 @media (hover: hover) and (pointer: fine) {
     .tabulator-row.tabulator-selectable:hover {
-        background-color: #cecece;
+        background-color: #d8d8d8;
     }
+}
+
+.HotelTitle {
+    font-size: 19px;
+}
+
+.HotelWorkers {
+    font-size: 18px;
+}
+
+.HotelTotalAmount {
+    font-size: 20px;
 }

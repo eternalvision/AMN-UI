@@ -1,8 +1,14 @@
-import { useEffect, useRef, useMemo, useCallback } from "react";
+import { useEffect, useRef, useMemo, useCallback, useState } from "react";
 import { TabulatorFull as Tabulator } from "tabulator-tables";
-import { nanoid } from "nanoid";
 
-export const Table = ({ LanguageSets, selectedLang, Hotels, UnitName }) => {
+export const Table = ({
+    LanguageSets,
+    selectedLang,
+    Hotels,
+    UnitName,
+    Loader,
+}) => {
+    const [isLoaded, setIsLoaded] = useState(false);
     const calculateFields = useCallback(
         ({ hours, rate, total_deductions, compensation, gross_wages }) => {
             let amount = hours * rate;
@@ -40,9 +46,17 @@ export const Table = ({ LanguageSets, selectedLang, Hotels, UnitName }) => {
 
     const cellEdited = useCallback(
         (cell) => {
+            const field = cell.getField();
+            const value = cell.getValue();
             const rowData = cell.getRow().getData();
-            const updatedFields = calculateFields(rowData);
+            const { recordId } = rowData;
+            const changedData = {
+                [field]: value,
+                workerId: recordId,
+            };
+            console.log(changedData);
 
+            const updatedFields = calculateFields(rowData);
             cell.getRow().update(updatedFields);
         },
         [calculateFields]
@@ -59,7 +73,7 @@ export const Table = ({ LanguageSets, selectedLang, Hotels, UnitName }) => {
                             compensation = "",
                             ...otherFields
                         } = employee;
-                        const { hours, rate } = employee;
+                        const { hours, rate, recordId } = employee;
 
                         const calculatedFields = calculateFields({
                             gross_wages,
@@ -70,11 +84,10 @@ export const Table = ({ LanguageSets, selectedLang, Hotels, UnitName }) => {
                         });
 
                         return {
+                            id: recordId,
                             unitName: UnitName,
-
                             ...otherFields,
                             ...calculatedFields,
-                            id: nanoid(6),
                             hotelName: hotel.hotelName,
                             position: position.positionName,
                             gross_wages,
@@ -105,23 +118,45 @@ export const Table = ({ LanguageSets, selectedLang, Hotels, UnitName }) => {
         Hotels,
         UnitName,
     });
-
     useEffect(() => {
         const currentTableRef = tableRef.current;
+
+        const TableInterfaceElementsGroup =
+            LanguageSets.TableInterfaceElementsGroup()[selectedLang][0];
+
+        const { workersTitle, totalAmountText } = TableInterfaceElementsGroup;
 
         if (currentTableRef) {
             tableInstance.current = new Tabulator(currentTableRef, {
                 columns: columnsWithWrap,
                 data: transformedData,
+                groupBy: ["hotelName", "position"],
+                groupStartOpen: [true, false],
+                groupHeader: (value, count, data) => {
+                    let totalAmount = 0;
+
+                    data.forEach((item) => {
+                        totalAmount += item.amount;
+                    });
+
+                    return `<b class="HotelTitle">${value}</b> <span class="HotelWorkers" style='margin-left:10px;'>(${count} ${workersTitle})</span>
+                        <span class="HotelTotalAmount" style='margin-left:10px;'>${totalAmountText}: ${totalAmount}</span>`;
+                },
             });
         }
+
+        setIsLoaded(true);
 
         return () => {
             if (currentTableRef) {
                 currentTableRef.innerHTML = "";
             }
         };
-    }, [columnsWithWrap, transformedData]);
+    }, [columnsWithWrap, transformedData, LanguageSets, selectedLang]);
 
-    return <section ref={tableRef}></section>;
+    return (
+        <>
+            {!isLoaded && <Loader />} <section ref={tableRef}></section>
+        </>
+    );
 };

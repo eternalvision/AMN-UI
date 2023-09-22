@@ -14,10 +14,11 @@ export const RoutesComponent = ({
 }) => {
     const { Computational, Documentation, Employees, Profile, Settings } =
         MainComponents;
+
     return (
         <Routes>
-            <Route path="*" element={<Navigate to="/:username/employees" />} />
-            <Route path="/" element={<Navigate to="/:username/employees" />} />
+            <Route path="*" element={<Navigate to={`/employees`} />} />
+            <Route path="/" element={<Navigate to={`/employees`} />} />
             <Route
                 path="/:username/settings"
                 element={
@@ -31,7 +32,7 @@ export const RoutesComponent = ({
                 }
             />
             <Route
-                path="/:username"
+                path={`/${username}`}
                 element={
                     <Profile
                         GetLogo={GetLogo}
@@ -43,7 +44,7 @@ export const RoutesComponent = ({
                 }
             />
             <Route
-                path="/:username/computational/:date/:category"
+                path={`/computational/:date/:category`}
                 element={
                     <Computational
                         GetLogo={GetLogo}
@@ -56,7 +57,7 @@ export const RoutesComponent = ({
                 }
             />
             <Route
-                path="/:username/employees"
+                path="/employees"
                 element={
                     <Employees
                         GetLogo={GetLogo}

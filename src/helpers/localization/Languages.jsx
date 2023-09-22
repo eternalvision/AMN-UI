@@ -97,17 +97,11 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Pracovní prostor",
-                    linkTo: `/${username}/workspace`,
+                    linkTo: "/employees",
                     image: "BookRead",
                 },
                 {
                     id: 2,
-                    text: "Výpočetní",
-                    linkTo: `/${username}/computational/:date`,
-                    image: "Calculator",
-                },
-                {
-                    id: 3,
                     text: "Dokumentace",
                     linkTo: "/documentation",
                     image: "Information",
@@ -117,17 +111,11 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Workspace",
-                    linkTo: `/${username}/workspace`,
+                    linkTo: "/employees",
                     image: "BookRead",
                 },
                 {
                     id: 2,
-                    text: "Computational",
-                    linkTo: `/${username}/computational/:date`,
-                    image: "Calculator",
-                },
-                {
-                    id: 3,
                     text: "Documentation",
                     linkTo: "/documentation",
                     image: "Information",
@@ -137,17 +125,11 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Робоча область",
-                    linkTo: `/${username}/workspace`,
+                    linkTo: "/employees",
                     image: "BookRead",
                 },
                 {
                     id: 2,
-                    text: "Розрахунок",
-                    linkTo: `/${username}/computational/:date`,
-                    image: "Calculator",
-                },
-                {
-                    id: 3,
                     text: "Документація",
                     linkTo: "/documentation",
                     image: "Information",
@@ -157,13 +139,13 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Рабочая область",
-                    linkTo: `/${username}/workspace`,
+                    linkTo: "/employees",
                     image: "BookRead",
                 },
                 {
                     id: 2,
                     text: "Расчет",
-                    linkTo: `/${username}/computational/:date`,
+                    linkTo: "/computational/:date/:category",
                     image: "Calculator",
                 },
                 {
@@ -567,6 +549,34 @@ export const Languages = {
                     field: "difference_fact_formula",
                     title: "Отличие факт/формула",
                     width: 110,
+                },
+            ],
+        };
+    },
+    TableInterfaceElementsGroup: () => {
+        return {
+            cz: [
+                {
+                    workersTitle: "pracovníků",
+                    totalAmountText: "Celková částka",
+                },
+            ],
+            en: [
+                {
+                    workersTitle: "workers",
+                    totalAmountText: "Total amount",
+                },
+            ],
+            ua: [
+                {
+                    workersTitle: "робітників",
+                    totalAmountText: "Загальна cума",
+                },
+            ],
+            ru: [
+                {
+                    workersTitle: "рабочих",
+                    totalAmountText: "Общая сумма",
                 },
             ],
         };

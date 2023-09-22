@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import { ComputationalComponents } from "./components/Components";
 const { Table } = ComputationalComponents;
 
@@ -9,16 +9,23 @@ export const Computational = ({
     Loader,
 }) => {
     const location = useLocation();
-    const { hotels, unitName } = location.state;
-    return location ? (
-        <Table
-            LanguageSets={LanguageSets}
-            selectedLang={selectedLang}
-            Hotels={hotels}
-            UnitName={unitName}
-            NumberFormatter={NumberFormatter}
-        />
-    ) : (
-        <Loader />
-    );
+
+    if (location && location.state) {
+        const { hotels, unitName } = location.state;
+
+        if (hotels && unitName) {
+            return (
+                <Table
+                    LanguageSets={LanguageSets}
+                    selectedLang={selectedLang}
+                    Hotels={hotels}
+                    UnitName={unitName}
+                    NumberFormatter={NumberFormatter}
+                    Loader={Loader}
+                />
+            );
+        }
+    }
+
+    return <Navigate to={`/workspace`} />;
 };

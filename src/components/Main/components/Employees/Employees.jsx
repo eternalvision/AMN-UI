@@ -57,7 +57,7 @@ export const Employees = ({
                                             className="Employee-category"
                                             onClick={() =>
                                                 navigate(
-                                                    `/${username}/computational/${dateY}${dateM}/${unitName}`,
+                                                    `/computational/${dateY}${dateM}/${unitName}`,
                                                     {
                                                         state: {
                                                             hotels,

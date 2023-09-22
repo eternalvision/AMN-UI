@@ -197,7 +197,7 @@ body::-webkit-scrollbar-button:vertical:end:increment {
   padding: 5px;
 }
 .tabulator-row.tabulator-selectable:hover {
-  background-color: #cecece;
+  background-color: #d8d8d8;
 }
 .tabulator-row .tabulator-cell.tabulator-editing {
   text-align: center;
@@ -208,9 +208,21 @@ body::-webkit-scrollbar-button:vertical:end:increment {
 
 @media (hover: hover) and (pointer: fine) {
   .tabulator-row.tabulator-selectable:hover {
-    background-color: #cecece;
+    background-color: #d8d8d8;
   }
 }
+.HotelTitle {
+  font-size: 19px;
+}
+
+.HotelWorkers {
+  font-size: 18px;
+}
+
+.HotelTotalAmount {
+  font-size: 20px;
+}
+
 :root {
   --body-bg-color: #f2f2f2;
   --login-bg-color: #c6c2c2d5;
