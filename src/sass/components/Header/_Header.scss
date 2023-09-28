@@ -1,7 +1,7 @@
-@import "./components/Logo";
-@import "./components/Dropdown";
 @import "./components/DarkMode";
+@import "./components/Dropdown";
 @import "./components/Localization";
+@import "./components/Logo";
 
 .Header {
     border-radius: var(--border-radius);

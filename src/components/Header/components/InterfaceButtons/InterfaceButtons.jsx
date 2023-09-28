@@ -8,11 +8,14 @@ export const InterfaceButtons = ({
     Icon,
     useLanguage,
     GetLogo,
+    userData,
+    logoutUser,
+    updateUserFinanceInfo,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const name = "Alexandr Priadchenko";
-    const username = "eternalvision";
     const { selectedLang } = useLanguage();
+
+    const { name, surname, username } = userData;
 
     const Values = LanguageSets.HeaderInterfaceButtons({ username })[
         selectedLang
@@ -20,15 +23,24 @@ export const InterfaceButtons = ({
 
     return (
         <>
-            <LocalizationComponent />
-            <DarkMode />
+            <LocalizationComponent
+                updateUserFinanceInfo={updateUserFinanceInfo}
+                userData={userData}
+            />
+            <DarkMode
+                updateUserFinanceInfo={updateUserFinanceInfo}
+                userData={userData}
+            />
             <div>
                 <section className="Dropdown">
-                    <button onClick={() => setIsOpen(!isOpen)}>{name}</button>
+                    <button onClick={() => setIsOpen(!isOpen)}>
+                        {name} {surname}
+                    </button>
                     <Dropdown
                         Values={Values}
                         isOpen={isOpen}
                         GetLogo={GetLogo}
+                        logoutUser={logoutUser}
                     />
                 </section>
             </div>

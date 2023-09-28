@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import shortUUID from "short-uuid";
 
-export const Dropdown = ({ Values, isOpen, GetLogo }) => {
+export const Dropdown = ({ Values, isOpen, GetLogo, logoutUser }) => {
     return (
         <>
             {isOpen ? (
@@ -9,7 +9,13 @@ export const Dropdown = ({ Values, isOpen, GetLogo }) => {
                     {Values.map(({ text, linkTo, image }) => {
                         return (
                             <li key={shortUUID.generate()}>
-                                <Link to={linkTo}>
+                                <Link
+                                    to={linkTo}
+                                    onClick={
+                                        linkTo === "/logout"
+                                            ? async () => await logoutUser()
+                                            : undefined
+                                    }>
                                     <GetLogo img={image} />
                                     <span>{text}</span>
                                 </Link>

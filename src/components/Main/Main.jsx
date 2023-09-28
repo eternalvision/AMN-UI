@@ -12,9 +12,12 @@ export const Main = ({
     NumberFormatter,
     Loader,
     useLocalStorageState,
+    activeNoneClass,
+    ApiRequests,
+    userData,
+    Login,
 }) => {
     const { selectedLang } = useLanguage();
-    const username = "eternalvision";
 
     return (
         <>
@@ -23,7 +26,8 @@ export const Main = ({
                     GetLogo={GetLogo}
                     LanguageSets={LanguageSets}
                     selectedLang={selectedLang}
-                    Username={username}
+                    userData={userData}
+                    activeNoneClass={activeNoneClass}
                 />
                 <section className="Rear-block">
                     <RoutesComponent
@@ -31,13 +35,15 @@ export const Main = ({
                         MainComponents={MainComponents}
                         LanguageSets={LanguageSets}
                         selectedLang={selectedLang}
-                        username={username}
+                        userData={userData}
                         useFetchData={useFetchData}
                         FilteredData={FilteredData}
                         useCurrentDate={useCurrentDate}
                         NumberFormatter={NumberFormatter}
                         Loader={Loader}
                         useLocalStorageState={useLocalStorageState}
+                        Login={Login}
+                        ApiRequests={ApiRequests}
                     />
                 </section>
             </main>

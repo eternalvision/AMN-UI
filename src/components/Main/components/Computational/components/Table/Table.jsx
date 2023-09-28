@@ -7,32 +7,65 @@ export const Table = ({
     Hotels,
     UnitName,
     Loader,
+    patchWorkerData,
+    getWorkerData,
 }) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [databaseRecords, setDatabaseRecords] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getWorkerData();
+                setDatabaseRecords(data.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, [getWorkerData]);
+
     const calculateFields = useCallback(
         ({ hours, rate, total_deductions, compensation, gross_wages }) => {
-            let amount = hours * rate;
-            let total_internal_costs = amount + total_deductions - compensation;
+            let amount = parseFloat((hours * rate).toFixed(2));
+            let total_internal_costs = parseFloat(
+                (amount + total_deductions - compensation).toFixed(2)
+            );
 
             let internal_costs_according_to_the_formula = 0;
             if (gross_wages !== "" && gross_wages != null) {
+                gross_wages = parseFloat(gross_wages);
                 if (gross_wages < 17300) {
-                    internal_costs_according_to_the_formula =
-                        gross_wages * 0.313 + 17300 * 0.135;
+                    internal_costs_according_to_the_formula = parseFloat(
+                        (gross_wages * 0.313 + 17300 * 0.135).toFixed(2)
+                    );
                 } else if (gross_wages < 42300) {
-                    internal_costs_according_to_the_formula =
-                        gross_wages * 0.313 +
-                        17300 * 0.135 +
-                        gross_wages * 0.15 -
-                        2570;
+                    internal_costs_according_to_the_formula = parseFloat(
+                        (
+                            gross_wages * 0.313 +
+                            17300 * 0.135 +
+                            gross_wages * 0.15 -
+                            2570
+                        ).toFixed(2)
+                    );
                 } else {
-                    internal_costs_according_to_the_formula =
-                        gross_wages * 0.448 + gross_wages * 0.15 - 2570;
+                    internal_costs_according_to_the_formula = parseFloat(
+                        (
+                            gross_wages * 0.448 +
+                            gross_wages * 0.15 -
+                            2570
+                        ).toFixed(2)
+                    );
                 }
             }
 
-            let difference_fact_formula =
-                total_internal_costs - internal_costs_according_to_the_formula;
+            let difference_fact_formula = parseFloat(
+                (
+                    total_internal_costs -
+                    internal_costs_according_to_the_formula
+                ).toFixed(2)
+            );
 
             return {
                 amount,
@@ -45,21 +78,25 @@ export const Table = ({
     );
 
     const cellEdited = useCallback(
-        (cell) => {
+        async (cell) => {
             const field = cell.getField();
             const value = cell.getValue();
             const rowData = cell.getRow().getData();
             const { recordId } = rowData;
             const changedData = {
                 [field]: value,
-                workerId: recordId,
             };
-            console.log(changedData);
 
             const updatedFields = calculateFields(rowData);
             cell.getRow().update(updatedFields);
+
+            try {
+                await patchWorkerData(recordId, changedData);
+            } catch (error) {
+                console.error("Error patching data:", error);
+            }
         },
-        [calculateFields]
+        [calculateFields, patchWorkerData]
     );
 
     const transformHotelsData = useCallback(
@@ -67,12 +104,19 @@ export const Table = ({
             return Hotels.flatMap((hotel) =>
                 hotel.positions.flatMap((position) =>
                     position.employees.map((employee) => {
+                        const dbRecord =
+                            databaseRecords.find(
+                                (record) =>
+                                    record.workerId === employee.recordId
+                            ) || {};
+
                         const {
-                            gross_wages = "",
-                            total_deductions = "",
-                            compensation = "",
+                            gross_wages = dbRecord.gross_wages || "",
+                            total_deductions = dbRecord.total_deductions || "",
+                            compensation = dbRecord.compensation || "",
                             ...otherFields
                         } = employee;
+
                         const { hours, rate, recordId } = employee;
 
                         const calculatedFields = calculateFields({
@@ -98,7 +142,7 @@ export const Table = ({
                 )
             );
         },
-        [calculateFields]
+        [calculateFields, databaseRecords]
     );
 
     const tableRef = useRef(null);

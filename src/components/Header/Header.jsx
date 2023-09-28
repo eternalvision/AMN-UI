@@ -10,6 +10,9 @@ export const Header = ({
     useDarkMode,
     handleClick,
     GetLogo,
+    userData,
+    logoutUser,
+    updateUserFinanceInfo,
 }) => {
     return (
         <header className="Header">
@@ -26,6 +29,9 @@ export const Header = ({
                         useLanguage={useLanguage}
                         useDarkMode={useDarkMode}
                         GetLogo={GetLogo}
+                        userData={userData}
+                        logoutUser={logoutUser}
+                        updateUserFinanceInfo={updateUserFinanceInfo}
                     />
                 </li>
             </ul>

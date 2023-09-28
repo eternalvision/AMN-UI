@@ -5,13 +5,29 @@ const shortId = require("short-uuid");
 
 const Values = Languages.LocalizationButtons();
 
-export const LocalizationComponent = () => {
-    const [activeId, setActiveId] = useState(1);
+export const LocalizationComponent = ({ updateUserFinanceInfo, userData }) => {
+    const initialLanguageItem = Values.find(
+        (item) => item.textId === userData.language
+    );
+
+    const [activeId, setActiveId] = useState(
+        initialLanguageItem ? initialLanguageItem.id : 1
+    );
+
     const { handleLangChange } = useLanguage();
+
+    const updateLanguageInBackend = async (newLanguage) => {
+        try {
+            await updateUserFinanceInfo({ language: newLanguage });
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleClick = (id, textId) => {
         handleLangChange(textId);
         setActiveId(id);
+        updateLanguageInBackend(textId);
     };
 
     return (

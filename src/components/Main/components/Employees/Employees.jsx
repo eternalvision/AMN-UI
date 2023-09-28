@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import shortUUID from "short-uuid";
 import { EmployeeComponents } from "./components/EmployeeComponents";
@@ -8,12 +7,12 @@ export const Employees = ({
     GetLogo,
     LanguageSets,
     selectedLang,
-    username,
     useFetchData,
     FilteredData,
     useCurrentDate,
     NumberFormatter,
     Loader,
+    userData,
 }) => {
     const Values = LanguageSets.CardInterfaceElements()[selectedLang];
     const navigate = useNavigate();
@@ -21,7 +20,7 @@ export const Employees = ({
     const { items } = useFetchData({
         currentYear,
         month,
-        asmisToken: "oVTsPsUzqn6bpfr3ZDGDok6LUnfXTqjk",
+        asmisToken: userData.asmisToken,
     });
 
     const { text, calculationText } = Values[0];

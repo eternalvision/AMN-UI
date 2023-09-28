@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap");
-@import "../fonts/DB Font/db.css";
 * {
   margin: 0;
   padding: 0;
@@ -223,6 +222,13 @@ body::-webkit-scrollbar-button:vertical:end:increment {
   font-size: 20px;
 }
 
+.activeMenu,
+.activeList,
+.activeLanguage {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
 :root {
   --body-bg-color: #f2f2f2;
   --login-bg-color: #c6c2c2d5;
@@ -297,23 +303,24 @@ body.dark {
   --page-block-shadow: 0 0 0 var(--thin-border) var(--separator_common-dark);
 }
 
-.Logo {
+.DarkMode {
+  border: none;
+  border-radius: 50%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: transparent;
+}
+.DarkMode button {
   cursor: pointer;
-  background-color: var(--layout-color-hover);
-  border-radius: var(--border-radius);
-  -webkit-box-shadow: var(--page-block-shadow);
-          box-shadow: var(--page-block-shadow);
-  padding: 10px;
+  background-color: transparent;
+  padding: 5px;
+  border-radius: 50%;
 }
-.Logo p {
-  line-height: normal;
-  border-radius: var(--border-radius);
-  font-family: "ODB", sans-serif !important;
-  font-size: 27px;
-  color: var(--layout-color);
-}
-.Logo p span {
-  font-family: "ODB", sans-serif !important;
+.DarkMode button svg {
+  display: block;
+  width: 35px;
+  height: 35px;
 }
 
 .Dropdown {
@@ -378,26 +385,6 @@ body.dark {
           box-shadow: var(--page-block-shadow);
 }
 
-.DarkMode {
-  border: none;
-  border-radius: 50%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: transparent;
-}
-.DarkMode button {
-  cursor: pointer;
-  background-color: transparent;
-  padding: 5px;
-  border-radius: 50%;
-}
-.DarkMode button svg {
-  display: block;
-  width: 35px;
-  height: 35px;
-}
-
 .activeLanguage {
   background-color: var(--gray) !important;
 }
@@ -421,6 +408,25 @@ body.dark {
 }
 .Localization button:last-child {
   border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+}
+
+.Logo {
+  cursor: pointer;
+  background-color: var(--layout-color-hover);
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  padding: 10px;
+}
+.Logo p {
+  line-height: normal;
+  border-radius: var(--border-radius);
+  font-family: "ODB", sans-serif !important;
+  font-size: 27px;
+  color: var(--layout-color);
+}
+.Logo p span {
+  font-family: "ODB", sans-serif !important;
 }
 
 .Header {
@@ -506,6 +512,36 @@ form {
 
 .finance-td input {
   font-size: 16px;
+}
+
+.AlertSection ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3px;
+}
+.AlertSection ul li span {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.AlertSection ul li svg {
+  color: #d7dadc;
+}
+
+.Status {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  padding: 10px;
+  min-width: 196px;
+  color: #d7dadc;
+  height: 70px;
+  border-radius: var(--border-radius);
+  margin: 0px 0px 10px 10px;
 }
 
 .Employee {
@@ -861,123 +897,6 @@ form {
 .Employee-filter input:active {
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
-}
-
-.Auth-section,
-.Registration-section {
-  border-radius: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  background: #d0c9ce;
-  background: -webkit-gradient(linear, left top, left bottom, from(#d0c9ce), to(#ebebf0));
-  background: linear-gradient(to bottom, #d0c9ce 0%, #ebebf0 100%);
-}
-
-.Form-title {
-  text-align: center;
-  font-size: 27px;
-  font-family: "ODB", sans-serif !important;
-  padding-top: 10px;
-}
-
-.Login-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Login-form ul li {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.Login-form ul li label p {
-  margin: 5px 0;
-  font-size: 20px;
-}
-.Login-form ul li label input {
-  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
-          box-shadow: 0 0 0 1px #b7b7b7;
-  width: 300px;
-  height: 38px;
-  padding: 0px 10px;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  background-color: #f2f2f2;
-  color: #222222 !important;
-}
-.Login-form ul li label input:hover {
-  background-color: #f2f2f2;
-}
-.Login-form ul li:last-child ul li label {
-  margin-bottom: 40px;
-}
-
-.Registration-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Registration-form ul li {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.Registration-form ul li label p {
-  margin: 8px 0;
-  font-size: 20px;
-}
-.Registration-form ul li label input {
-  width: 300px;
-  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
-          box-shadow: 0 0 0 1px #b7b7b7;
-  height: 38px;
-  padding: 0px 10px;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  background-color: #f2f2f2 !important;
-  color: #222222 !important;
-}
-.Registration-form ul li label input:hover {
-  background-color: #f2f2f2 !important;
-}
-.Registration-form ul li:last-child ul li label {
-  margin-bottom: 40px;
-}
-
-.Form-buttons button {
-  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
-          box-shadow: 0 0 0 1px #b7b7b7;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  background-color: #f2f2f2;
-  color: #222222;
-  padding: 10px 20px;
-}
-.Form-buttons button span {
-  font-size: 15px;
-}
-.Form-buttons button:hover {
-  cursor: pointer;
 }
 
 tbody {
@@ -1356,6 +1275,125 @@ thead tr td span {
   text-align: center;
 }
 
+.Profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 100%;
+}
+.Profile div {
+  border-radius: var(--border-radius);
+  padding: 15px;
+  background-color: var(--background-color);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+}
+.Profile div ul:first-of-type {
+  margin-bottom: 30px;
+}
+.Profile div ul:first-of-type li:first-child img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.Name,
+.Username {
+  color: var(--invert-color);
+}
+
+.Name {
+  font-size: 25px;
+}
+
+.Username {
+  font-size: 20px;
+}
+
+.Email,
+.PhoneNumber {
+  font-size: 20px;
+  -webkit-text-decoration: underline var(--invert-color);
+          text-decoration: underline var(--invert-color);
+}
+
+.Email {
+  margin-bottom: 10px;
+}
+
+.Settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 100%;
+}
+.Settings div {
+  border-radius: var(--border-radius);
+  padding: 15px;
+  background-color: var(--background-color);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+}
+
+.Settings-form ul li {
+  font-size: 20px;
+  padding: 5px;
+}
+.Settings-form ul li label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Settings-form ul li label p {
+  color: var(--invert-color);
+  margin-right: 30px;
+}
+.Settings-form ul li label input {
+  padding: 5px;
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  background-color: var(--bg-color);
+  color: var(--invert-color);
+  padding-left: 20px;
+}
+.Settings-form ul li:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.Settings-save-btn {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  background-color: var(--bg-color);
+  color: var(--invert-color);
+}
+
 .Main {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
@@ -1438,299 +1476,132 @@ thead tr td span {
   display: none !important;
 }
 
-.Profile {
-  -webkit-box-align: start !important;
-      -ms-flex-align: start !important;
-          align-items: start !important;
-  color: var(--layout-color);
-  border-radius: var(--border-radius);
-}
-.Profile div {
-  border-radius: var(--border-radius);
-  -webkit-box-orient: horizontal;
+.Auth-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
-.Profile div ul:first-child li h2 {
-  color: var(--layout-color);
-}
-.Profile div ul:first-child li:first-child img {
-  display: block;
-  margin-bottom: 45px;
-  background-size: cover;
-  -o-object-fit: cover;
-     object-fit: cover;
-  background-position: center;
-  border-radius: var(--border-radius);
+
+.Auth-section,
+.Registration-section {
+  border-radius: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  background: #d0c9ce;
+  background: -webkit-gradient(linear, left top, left bottom, from(#d0c9ce), to(#ebebf0));
+  background: linear-gradient(to bottom, #d0c9ce 0%, #ebebf0 100%);
 }
 
-.Profile-block {
-  padding: 40px;
-  -webkit-box-shadow: var(--page-block-shadow);
-          box-shadow: var(--page-block-shadow);
-  background-color: var(--background-color);
+.Form-title {
+  text-align: center;
+  font-size: 27px;
+  font-family: "ODB", sans-serif !important;
+  margin-bottom: 50px;
 }
 
-.TextDecoration {
-  text-decoration: underline;
-}
-
-.Name {
-  padding: 40px 0px 0px 0px;
-  -ms-flex-wrap: nowrap !important;
-      flex-wrap: nowrap !important;
+.Login-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: var(--layout-color);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-
-.Username {
-  font-size: 15px;
-  padding: 0px 0px 30px 0px;
-  color: var(--layout-color);
+.Login-form ul li {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-
-.Firm {
+.Login-form ul li label p {
+  margin: 5px 0;
   font-size: 20px;
-  color: var(--layout-color);
 }
-
-.Email,
-.Firm {
-  padding: 0px 0px 10px 0px;
-}
-.Email a,
-.Firm a {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Email a span,
-.Firm a span {
-  padding-left: 10px;
-}
-
-.Contract-type {
-  font-size: 16px;
-  color: var(--layout-color);
-}
-
-.Contract-type,
-.Firm {
-  padding: 0px 0px 10px 0px;
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Contract-type svg,
-.Firm svg {
-  width: 24px;
-  height: 24px;
-}
-.Contract-type span,
-.Firm span {
-  padding-left: 5px;
-}
-
-.Email,
-.PhoneNumber,
-.Firm {
-  font-size: 17px;
-  color: var(--layout-color);
-}
-.Email a,
-.PhoneNumber a,
-.Firm a {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Email a svg,
-.PhoneNumber a svg,
-.Firm a svg {
-  width: 24px;
-  height: 24px;
-}
-.Email a span,
-.PhoneNumber a span,
-.Firm a span {
-  padding-left: 5px;
-}
-.Email a:hover,
-.PhoneNumber a:hover,
-.Firm a:hover {
-  color: var(--link-hover) !important;
-}
-
-.Comment {
-  font-size: 17px;
-  color: var(--layout-color);
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Comment svg {
-  width: 24px;
-  height: 24px;
-}
-.Comment span {
-  padding-left: 5px;
-}
-
-.Settings-form ul li label div {
-  margin-top: 15px !important;
-  display: block !important;
-}
-.Settings-form ul li label div p {
-  color: var(--layout-color);
-  margin-bottom: 5px;
-}
-.Settings-form ul li:last-child div {
-  padding-top: 40px;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Settings-form ul li:last-child div section:first-child a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 10px;
-  border-radius: var(--border-radius);
-  background-color: var(--layout-color);
-}
-.Settings-form ul li:last-child div section:first-child a svg {
-  color: var(--reinver-color);
-}
-.Settings-form ul li:last-child div section:first-child a span {
-  font-size: 17px;
-  color: var(--reinver-color);
-  padding-left: 10px;
-}
-
-.Settings a {
-  -webkit-box-shadow: var(--page-block-shadow);
-          box-shadow: var(--page-block-shadow);
-  background-color: var(--layout-color);
-  border-radius: var(--border-radius);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 10px;
-}
-.Settings a svg {
-  color: var(--reinver-color);
-}
-.Settings a span {
-  font-size: 17px;
-  color: var(--reinver-color);
-  padding-left: 10px;
-}
-
-.Settings-save-btn {
-  height: 38px;
-  border-radius: var(--border-radius);
-  background-color: green;
-  -webkit-box-shadow: 0 0 30px 0 rgba(50, 165, 50, 0.6156862745);
-  box-shadow: 0 0 30px 0 rgba(50, 165, 50, 0.6156862745);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0px 15px;
-}
-.Settings-save-btn svg {
-  color: #d7dadc;
-}
-.Settings-save-btn span {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  font-size: 17px;
-  color: #d7dadc;
-  padding-left: 10px;
-}
-.Settings-save-btn:hover {
-  cursor: pointer;
-}
-
-.Settings-inputs {
-  -webkit-box-shadow: var(--page-block-shadow);
-          box-shadow: var(--page-block-shadow);
-  color: var(--layout-color);
+.Login-form ul li label input {
+  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
+          box-shadow: 0 0 0 1px #b7b7b7;
   width: 300px;
   height: 38px;
   padding: 0px 10px;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
   outline: none;
   border: none;
-  background: var(--search-bg-color);
+  background-color: #f2f2f2;
+  color: #222222 !important;
+}
+.Login-form ul li label input:hover {
+  background-color: #f2f2f2;
+}
+.Login-form ul li:last-child ul li label {
+  margin-bottom: 40px;
 }
 
-.AlertSection ul li {
+.Registration-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 3px;
 }
-.AlertSection ul li span {
-  font-size: 18px;
-  margin-left: 10px;
+.Registration-form ul li {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.AlertSection ul li svg {
-  color: #d7dadc;
+.Registration-form ul li label p {
+  margin: 8px 0;
+  font-size: 20px;
+}
+.Registration-form ul li label input {
+  width: 300px;
+  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
+          box-shadow: 0 0 0 1px #b7b7b7;
+  height: 38px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: #f2f2f2 !important;
+  color: #222222 !important;
+}
+.Registration-form ul li label input:hover {
+  background-color: #f2f2f2 !important;
+}
+.Registration-form ul li:last-child ul li label {
+  margin-bottom: 40px;
 }
 
-.Status {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 5;
-  padding: 10px;
-  min-width: 196px;
-  color: #d7dadc;
-  height: 70px;
-  border-radius: var(--border-radius);
-  margin: 0px 0px 10px 10px;
+.Form-buttons button {
+  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
+          box-shadow: 0 0 0 1px #b7b7b7;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: #f2f2f2;
+  color: #222222;
+  padding: 10px 20px;
+}
+.Form-buttons button span {
+  font-size: 15px;
+}
+.Form-buttons button:hover {
+  cursor: pointer;
 }

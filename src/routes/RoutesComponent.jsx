@@ -5,84 +5,98 @@ export const RoutesComponent = ({
     MainComponents,
     LanguageSets,
     selectedLang,
-    username,
     useFetchData,
     FilteredData,
     useCurrentDate,
     NumberFormatter,
     Loader,
+    userData,
+    Login,
+    ApiRequests,
 }) => {
     const { Computational, Documentation, Employees, Profile, Settings } =
         MainComponents;
+    const { updateUserFinanceInfo, patchWorkerData, getWorkerData } =
+        ApiRequests;
 
-    return (
+    const { username } = userData;
+    if (userData) {
+        return (
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Employees
+                            GetLogo={GetLogo}
+                            LanguageSets={LanguageSets}
+                            selectedLang={selectedLang}
+                            username={username}
+                            useFetchData={useFetchData}
+                            FilteredData={FilteredData}
+                            useCurrentDate={useCurrentDate}
+                            NumberFormatter={NumberFormatter}
+                            Loader={Loader}
+                            userData={userData}
+                        />
+                    }
+                />
+                <Route path="/logout" element={<Navigate to={`/login`} />} />
+                <Route
+                    path="/:username/settings"
+                    element={
+                        <Settings
+                            GetLogo={GetLogo}
+                            LanguageSets={LanguageSets}
+                            selectedLang={selectedLang}
+                            updateUserFinanceInfo={updateUserFinanceInfo}
+                        />
+                    }
+                />
+                <Route
+                    path={`/${username}`}
+                    element={
+                        <Profile
+                            GetLogo={GetLogo}
+                            LanguageSets={LanguageSets}
+                            selectedLang={selectedLang}
+                            userData={userData}
+                            Loader={Loader}
+                        />
+                    }
+                />
+                <Route
+                    path={`/computational/:date/:category`}
+                    element={
+                        <Computational
+                            GetLogo={GetLogo}
+                            LanguageSets={LanguageSets}
+                            selectedLang={selectedLang}
+                            username={username}
+                            NumberFormatter={NumberFormatter}
+                            Loader={Loader}
+                            patchWorkerData={patchWorkerData}
+                            getWorkerData={getWorkerData}
+                        />
+                    }
+                />
+                <Route
+                    path="/documentation"
+                    element={
+                        <Documentation
+                            GetLogo={GetLogo}
+                            LanguageSets={LanguageSets}
+                            selectedLang={selectedLang}
+                            Loader={Loader}
+                        />
+                    }
+                />
+                <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+        );
+    } else {
         <Routes>
-            <Route path="*" element={<Navigate to={`/employees`} />} />
-            <Route path="/" element={<Navigate to={`/employees`} />} />
-            <Route
-                path="/:username/settings"
-                element={
-                    <Settings
-                        GetLogo={GetLogo}
-                        LanguageSets={LanguageSets}
-                        selectedLang={selectedLang}
-                        username={username}
-                        Loader={Loader}
-                    />
-                }
-            />
-            <Route
-                path={`/${username}`}
-                element={
-                    <Profile
-                        GetLogo={GetLogo}
-                        LanguageSets={LanguageSets}
-                        selectedLang={selectedLang}
-                        username={username}
-                        Loader={Loader}
-                    />
-                }
-            />
-            <Route
-                path={`/computational/:date/:category`}
-                element={
-                    <Computational
-                        GetLogo={GetLogo}
-                        LanguageSets={LanguageSets}
-                        selectedLang={selectedLang}
-                        username={username}
-                        NumberFormatter={NumberFormatter}
-                        Loader={Loader}
-                    />
-                }
-            />
-            <Route
-                path="/employees"
-                element={
-                    <Employees
-                        GetLogo={GetLogo}
-                        LanguageSets={LanguageSets}
-                        selectedLang={selectedLang}
-                        username={username}
-                        useFetchData={useFetchData}
-                        FilteredData={FilteredData}
-                        useCurrentDate={useCurrentDate}
-                        NumberFormatter={NumberFormatter}
-                        Loader={Loader}
-                    />
-                }
-            />
-            <Route
-                path="/documentation"
-                element={
-                    <Documentation
-                        GetLogo={GetLogo}
-                        LanguageSets={LanguageSets}
-                        selectedLang={selectedLang}
-                        Loader={Loader}
-                    />
-                }
-            />
-        </Routes>
-    );
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>;
+    }
 };

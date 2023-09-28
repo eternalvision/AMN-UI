@@ -1,0 +1,50 @@
+.Settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    div {
+        border-radius: var(--border-radius);
+        padding: 15px;
+        background-color: var(--background-color);
+        box-shadow: var(--page-block-shadow);
+    }
+}
+
+.Settings-form {
+    ul {
+        li {
+            font-size: 20px;
+            padding: 5px;
+            label {
+                display: flex;
+                justify-content: space-between;
+                p {
+                    color: var(--invert-color);
+                    margin-right: 30px;
+                }
+                input {
+                    padding: 5px;
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--page-block-shadow);
+                    background-color: var(--bg-color);
+                    color: var(--invert-color);
+                    padding-left: 20px;
+                }
+            }
+            &:last-child {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+.Settings-save-btn {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--page-block-shadow);
+    background-color: var(--bg-color);
+    color: var(--invert-color);
+}

@@ -220,3 +220,10 @@ body {
 .HotelTotalAmount {
     font-size: 20px;
 }
+
+.activeMenu,
+.activeList,
+.activeLanguage {
+    pointer-events: none !important;
+    cursor: default !important;
+}

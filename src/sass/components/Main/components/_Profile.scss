@@ -1,0 +1,51 @@
+.Profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    // max-width: 600px;
+    div {
+        border-radius: var(--border-radius);
+        padding: 15px;
+        background-color: var(--background-color);
+        box-shadow: var(--page-block-shadow);
+
+        ul {
+            &:first-of-type {
+                margin-bottom: 30px;
+                li {
+                    &:first-child {
+                        img {
+                            object-fit: cover;
+                            border-radius: var(--border-radius);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.Name,
+.Username {
+    color: var(--invert-color);
+}
+
+.Name {
+    font-size: 25px;
+}
+
+.Username {
+    font-size: 20px;
+}
+
+.Email,
+.PhoneNumber {
+    font-size: 20px;
+    text-decoration: underline var(--invert-color);
+}
+
+.Email {
+    margin-bottom: 10px;
+}

@@ -97,7 +97,7 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Pracovní prostor",
-                    linkTo: "/employees",
+                    linkTo: "/",
                     image: "BookRead",
                 },
                 {
@@ -111,7 +111,7 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Workspace",
-                    linkTo: "/employees",
+                    linkTo: "/",
                     image: "BookRead",
                 },
                 {
@@ -125,7 +125,7 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Робоча область",
-                    linkTo: "/employees",
+                    linkTo: "/",
                     image: "BookRead",
                 },
                 {
@@ -139,14 +139,8 @@ export const Languages = {
                 {
                     id: 1,
                     text: "Рабочая область",
-                    linkTo: "/employees",
+                    linkTo: "/",
                     image: "BookRead",
-                },
-                {
-                    id: 2,
-                    text: "Расчет",
-                    linkTo: "/computational/:date/:category",
-                    image: "Calculator",
                 },
                 {
                     id: 3,
@@ -577,6 +571,54 @@ export const Languages = {
                 {
                     workersTitle: "рабочих",
                     totalAmountText: "Общая сумма",
+                },
+            ],
+        };
+    },
+    SettingsElements: () => {
+        return {
+            cz: [
+                {
+                    textName: "Jméno",
+                    textSurname: "Příjmení",
+                    textUsername: "Uživatelské jméno",
+                    textEmail: "E-mail",
+                    textPhoneNumber: "Telefonní číslo",
+                    textPhotoLink: "Odkaz na fotografii",
+                    textSave: "Uložit",
+                },
+            ],
+            en: [
+                {
+                    textName: "Name",
+                    textSurname: "Surname",
+                    textUsername: "Username",
+                    textEmail: "Email",
+                    textPhoneNumber: "Phone Number",
+                    textPhotoLink: "Photo link",
+                    textSave: "Save",
+                },
+            ],
+            ua: [
+                {
+                    textName: "Ім'я",
+                    textSurname: "Прізвище",
+                    textUsername: "Ім'я користувача",
+                    textEmail: "Електронна пошта",
+                    textPhoneNumber: "Номер телефону",
+                    textPhotoLink: "Посилання на фото",
+                    textSave: "Зберегти",
+                },
+            ],
+            ru: [
+                {
+                    textName: "Имя",
+                    textSurname: "Фамилия",
+                    textUsername: "Имя пользователя",
+                    textEmail: "Электронная почта",
+                    textPhoneNumber: "Номер телефона",
+                    textPhotoLink: "Ссылка на фото",
+                    textSave: "Сохранить",
                 },
             ],
         };

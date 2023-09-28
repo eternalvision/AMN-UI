@@ -7,6 +7,8 @@ export const Computational = ({
     selectedLang,
     NumberFormatter,
     Loader,
+    patchWorkerData,
+    getWorkerData,
 }) => {
     const location = useLocation();
 
@@ -22,6 +24,8 @@ export const Computational = ({
                     UnitName={unitName}
                     NumberFormatter={NumberFormatter}
                     Loader={Loader}
+                    patchWorkerData={patchWorkerData}
+                    getWorkerData={getWorkerData}
                 />
             );
         }
