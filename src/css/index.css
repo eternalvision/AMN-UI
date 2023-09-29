@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap");
+@import "../fonts/DB Font/db.css";
 * {
   margin: 0;
   padding: 0;
@@ -1333,9 +1334,8 @@ thead tr td span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -1349,6 +1349,10 @@ thead tr td span {
   background-color: var(--background-color);
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
+}
+.Settings h2 {
+  color: var(--invert-color);
+  margin-bottom: 20px;
 }
 
 .Settings-form ul li {
@@ -1392,6 +1396,103 @@ thead tr td span {
           box-shadow: var(--page-block-shadow);
   background-color: var(--bg-color);
   color: var(--invert-color);
+}
+
+.Registration-form ul li {
+  font-size: 20px;
+  padding: 5px;
+}
+.Registration-form ul li label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Registration-form ul li label p {
+  color: var(--invert-color);
+  margin-right: 30px;
+}
+.Registration-form ul li label input {
+  padding: 5px;
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  background-color: var(--bg-color);
+  color: var(--invert-color);
+  padding-left: 20px;
+}
+.Registration-form ul li:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.Registration-register-btn,
+.Registration-select {
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  background-color: var(--bg-color);
+  color: var(--invert-color);
+}
+
+.User-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.User-list__items {
+  background-color: var(--bg-color);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  margin: 5px;
+}
+
+.User-list__items ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.User-list__items ul li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 15px;
+  color: var(--invert-color);
+  font-size: 20px;
+}
+.User-list__items ul li img {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.User-list__items ul li:last-child button {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  cursor: pointer;
 }
 
 .Main {
@@ -1545,47 +1646,6 @@ thead tr td span {
   background-color: #f2f2f2;
 }
 .Login-form ul li:last-child ul li label {
-  margin-bottom: 40px;
-}
-
-.Registration-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.Registration-form ul li {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.Registration-form ul li label p {
-  margin: 8px 0;
-  font-size: 20px;
-}
-.Registration-form ul li label input {
-  width: 300px;
-  -webkit-box-shadow: 0 0 0 1px #b7b7b7;
-          box-shadow: 0 0 0 1px #b7b7b7;
-  height: 38px;
-  padding: 0px 10px;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  background-color: #f2f2f2 !important;
-  color: #222222 !important;
-}
-.Registration-form ul li label input:hover {
-  background-color: #f2f2f2 !important;
-}
-.Registration-form ul li:last-child ul li label {
   margin-bottom: 40px;
 }
 

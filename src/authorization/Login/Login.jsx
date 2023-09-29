@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-export const Login = ({ onClickRegister, loginUser, onLoginSuccess }) => {
+export const Login = ({ loginUser, onLoginSuccess }) => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -86,9 +86,6 @@ export const Login = ({ onClickRegister, loginUser, onLoginSuccess }) => {
                             <li className="Form-buttons">
                                 <button type="submit">
                                     <span>Přihlásit se</span>
-                                </button>
-                                <button type="button" onClick={onClickRegister}>
-                                    <span>Registrovat</span>
                                 </button>
                             </li>
                         </ul>

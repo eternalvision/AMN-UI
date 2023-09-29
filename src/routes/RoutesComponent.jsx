@@ -16,10 +16,17 @@ export const RoutesComponent = ({
 }) => {
     const { Computational, Documentation, Employees, Profile, Settings } =
         MainComponents;
-    const { updateUserFinanceInfo, patchWorkerData, getWorkerData } =
-        ApiRequests;
+    const {
+        updateUserFinanceInfo,
+        patchWorkerData,
+        getWorkerData,
+        registerUser,
+        deleteUser,
+        getAllUsers,
+        updateUserPassword,
+    } = ApiRequests;
 
-    const { username } = userData;
+    const { username, profileType } = userData;
     if (userData) {
         return (
             <Routes>
@@ -49,6 +56,11 @@ export const RoutesComponent = ({
                             LanguageSets={LanguageSets}
                             selectedLang={selectedLang}
                             updateUserFinanceInfo={updateUserFinanceInfo}
+                            profileType={profileType}
+                            registerUser={registerUser}
+                            deleteUser={deleteUser}
+                            getAllUsers={getAllUsers}
+                            updateUserPassword={updateUserPassword}
                         />
                     }
                 />

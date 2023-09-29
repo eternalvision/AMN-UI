@@ -4,15 +4,16 @@ import Cookies from "js-cookie";
 axios.defaults.baseURL = "http://localhost:1594/api";
 
 const token = {
-    set(token) {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    set() {
+        axios.defaults.headers.common.Authorization = `Bearer ${Cookies.get(
+            "userToken"
+        )}`;
     },
     unset() {
-        axios.defaults.headers.common.Authorization = "";
+        axios.defaults.headers.common.Authorization =
+            Cookies.remove("userToken");
     },
 };
-
-const userToken = Cookies.get("userToken");
 
 const handleError = (error) => {
     throw error.response.data;
@@ -47,7 +48,6 @@ const logoutUser = async () => {
     try {
         const response = await axios.get(`/auth/profile/logout`, {});
         token.unset();
-        Cookies.remove("userToken");
         window.location.reload();
         return response.data;
     } catch (error) {
@@ -57,16 +57,19 @@ const logoutUser = async () => {
 
 const deleteUser = async (workerId) => {
     try {
-        const response = await axios.delete(`/auth/users/${workerId}`);
+        const response = await axios.delete(
+            `/auth/profiles/delete/${workerId}`
+        );
+        token.set();
         return response.data;
     } catch (error) {
         handleError(error);
     }
 };
 
-const getCurrentUser = async (userToken) => {
+const getCurrentUser = async () => {
     try {
-        token.set(userToken);
+        token.set();
         const response = await axios.get(`/auth/profile`);
         return response.data;
     } catch (error) {
@@ -85,7 +88,7 @@ const getAnotherUser = async (workerId) => {
 
 const getAllUsers = async () => {
     try {
-        const response = await axios.get(`/auth/users`);
+        const response = await axios.get(`/auth/profiles`);
         return response.data;
     } catch (error) {
         handleError(error);
@@ -118,7 +121,7 @@ const updateAnotherUserPassword = async (workerId, newPassword) => {
 const updateUserFinanceInfo = async (financeData) => {
     try {
         const response = await axios.put(`/auth/profile/update`, financeData);
-        token.set(userToken);
+        token.set();
 
         return response.data;
     } catch (error) {
@@ -132,7 +135,7 @@ const patchWorkerData = async (workerId, updatedData) => {
             `/staff/updatePatch/${workerId}`,
             updatedData
         );
-        token.set(userToken);
+        token.set();
 
         return response.data;
     } catch (error) {

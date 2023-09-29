@@ -579,6 +579,7 @@ export const Languages = {
         return {
             cz: [
                 {
+                    textTitle: "Moje nastavení",
                     textName: "Jméno",
                     textSurname: "Příjmení",
                     textUsername: "Uživatelské jméno",
@@ -590,6 +591,7 @@ export const Languages = {
             ],
             en: [
                 {
+                    textTitle: "My settings",
                     textName: "Name",
                     textSurname: "Surname",
                     textUsername: "Username",
@@ -601,6 +603,7 @@ export const Languages = {
             ],
             ua: [
                 {
+                    textTitle: "Мої настройки",
                     textName: "Ім'я",
                     textSurname: "Прізвище",
                     textUsername: "Ім'я користувача",
@@ -612,6 +615,7 @@ export const Languages = {
             ],
             ru: [
                 {
+                    textTitle: "Мои настройки",
                     textName: "Имя",
                     textSurname: "Фамилия",
                     textUsername: "Имя пользователя",
@@ -619,6 +623,102 @@ export const Languages = {
                     textPhoneNumber: "Номер телефона",
                     textPhotoLink: "Ссылка на фото",
                     textSave: "Сохранить",
+                },
+            ],
+        };
+    },
+    RegistrationElements: () => {
+        return {
+            cz: [
+                {
+                    textTitle: "Registrace nového uživatele",
+                    textName: "Jméno",
+                    textSurname: "Příjmení",
+                    textUsername: "Uživatelské jméno",
+                    textEmail: "E-mail",
+                    textPhoneNumber: "Telefonní číslo",
+                    textPassword: "Heslo",
+                    textPhotoLink: "Odkaz na fotografii",
+                    textProfileType: "Typ profilu",
+                    textRegister: "Registrovat",
+                    textUser: "Uživatel",
+                    textAdmin: "Správce",
+                },
+            ],
+            en: [
+                {
+                    textTitle: "New User Registration",
+                    textName: "Name",
+                    textSurname: "Surname",
+                    textUsername: "Username",
+                    textEmail: "Email",
+                    textPhoneNumber: "Phone Number",
+                    textPassword: "Password",
+                    textPhotoLink: "Photo link",
+                    textProfileType: "Profile type",
+                    textRegister: "Register",
+                    textUser: "User",
+                    textAdmin: "Administrator",
+                },
+            ],
+            ua: [
+                {
+                    textTitle: "Реєстрація нового користувача",
+                    textName: "Ім'я",
+                    textSurname: "Прізвище",
+                    textUsername: "Ім'я користувача",
+                    textEmail: "Електронна пошта",
+                    textPhoneNumber: "Номер телефону",
+                    textPassword: "Пароль",
+                    textPhotoLink: "Посилання на фото",
+                    textProfileType: "Тип профілю",
+                    textRegister: "Зареєструватися",
+                    textUser: "Користувач",
+                    textAdmin: "Адміністратор",
+                },
+            ],
+            ru: [
+                {
+                    textTitle: "Регистрация нового пользователя",
+                    textName: "Имя",
+                    textSurname: "Фамилия",
+                    textUsername: "Имя пользователя",
+                    textEmail: "Электронная почта",
+                    textPhoneNumber: "Номер телефона",
+                    textPassword: "Пароль",
+                    textPhotoLink: "Ссылка на фото",
+                    textProfileType: "Тип профиля",
+                    textRegister: "Зарегистрироваться",
+                    textUser: "Пользователь",
+                    textAdmin: "Администратор",
+                },
+            ],
+        };
+    },
+    UsersElements: () => {
+        return {
+            cz: [
+                {
+                    textTitle: "Seznam uživatelů",
+                    deleteText: "Smazat uživatele",
+                },
+            ],
+            en: [
+                {
+                    textTitle: "Users",
+                    deleteText: "Delete user",
+                },
+            ],
+            ua: [
+                {
+                    textTitle: "Користувачі",
+                    deleteText: "Видалити користувача",
+                },
+            ],
+            ru: [
+                {
+                    textTitle: "Пользователи",
+                    deleteText: "Удалить пользователя",
                 },
             ],
         };

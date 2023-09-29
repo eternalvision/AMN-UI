@@ -1,39 +1,23 @@
 import { useState } from "react";
-import { Registration } from "./components/Registration";
+import { Users } from "./Users";
 
-export const Settings = ({
-    LanguageSets,
-    selectedLang,
-    updateUserFinanceInfo,
-    profileType,
+export const Registration = ({
     registerUser,
     deleteUser,
     getAllUsers,
-    updateUserPassword,
+    LanguageSets,
+    selectedLang,
 }) => {
-    const Values = LanguageSets.SettingsElements()[selectedLang][0];
-    const {
-        textName,
-        textSurname,
-        textUsername,
-        textEmail,
-        textPhoneNumber,
-        textPhotoLink,
-        textSave,
-        textTitle,
-    } = Values;
-
     const initialState = {
         name: "",
         surname: "",
-        username: "",
-        email: "",
         phoneNumber: "",
+        email: "",
+        username: "",
+        password: "",
         linkToPhoto: "",
+        profileType: "user",
     };
-
-    const [originalData, setOriginalData] = useState(initialState);
-
     const [formData, setFormData] = useState(initialState);
 
     const handleInputChange = (e) => {
@@ -44,45 +28,59 @@ export const Settings = ({
         }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const updatedFields = Object.entries(formData).reduce(
-            (acc, [key, value]) => {
-                if (originalData[key] !== value) {
-                    acc[key] = value;
-                }
-                return acc;
-            },
-            {}
+        const filteredFormData = Object.fromEntries(
+            Object.entries(formData).filter(([_, value]) => value !== "")
         );
 
-        const result = updateUserFinanceInfo(updatedFields);
-        if (result) {
-            window.location.reload();
+        console.log(filteredFormData);
+
+        try {
+            const response = await registerUser(filteredFormData);
+            if (response && response.data && response.data.token) {
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error(error);
         }
-
-        clearInput();
     };
 
-    const clearInput = () => {
-        setFormData(initialState);
-    };
+    const Values =
+        LanguageSets.RegistrationElements &&
+        LanguageSets.RegistrationElements()[selectedLang][0];
+
+    const {
+        textName,
+        textSurname,
+        textUsername,
+        textEmail,
+        textPhoneNumber,
+        textPhotoLink,
+        textPassword,
+        textProfileType,
+        textRegister,
+        textTitle,
+        textUser,
+        textAdmin,
+    } = Values || {};
 
     return (
-        <section className="Settings">
+        <>
             <div>
                 <h2 style={{ marginBottom: "20px" }}>{textTitle}</h2>
-                <form className="Settings-form" onSubmit={handleSubmit}>
+
+                <form className="Registration-form" onSubmit={handleSubmit}>
                     <ul>
                         <li>
                             <label>
                                 <p>{textName}</p>
                                 <input
                                     onChange={handleInputChange}
-                                    type="name"
+                                    type="text"
                                     name="name"
-                                    className="Settings-inputs"
+                                    className="Registration-inputs"
                                     value={formData.name}
                                     placeholder={textName}
                                 />
@@ -93,9 +91,9 @@ export const Settings = ({
                                 <p>{textSurname}</p>
                                 <input
                                     onChange={handleInputChange}
-                                    type="surname"
+                                    type="text"
                                     name="surname"
-                                    className="Settings-inputs"
+                                    className="Registration-inputs"
                                     value={formData.surname}
                                     placeholder={textSurname}
                                 />
@@ -106,9 +104,9 @@ export const Settings = ({
                                 <p>{textUsername}</p>
                                 <input
                                     onChange={handleInputChange}
-                                    type="username"
+                                    type="text"
                                     name="username"
-                                    className="Settings-inputs"
+                                    className="Registration-inputs"
                                     value={formData.username}
                                     placeholder={textUsername}
                                 />
@@ -121,15 +119,9 @@ export const Settings = ({
                                     onChange={handleInputChange}
                                     type="email"
                                     name="email"
-                                    lang="en"
-                                    className="Settings-inputs"
-                                    maxLength="254"
+                                    className="Registration-inputs"
                                     value={formData.email}
                                     placeholder={textEmail}
-                                    autoCapitalize="off"
-                                    spellCheck="false"
-                                    autoCorrect="off"
-                                    inputMode="email"
                                 />
                             </label>
                         </li>
@@ -137,13 +129,25 @@ export const Settings = ({
                             <label>
                                 <p>{textPhoneNumber}</p>
                                 <input
-                                    className="Settings-inputs"
                                     onChange={handleInputChange}
                                     type="tel"
-                                    id="phone"
                                     name="phoneNumber"
-                                    value={formData.phone}
+                                    className="Registration-inputs"
+                                    value={formData.phoneNumber}
                                     placeholder={textPhoneNumber}
+                                />
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <p>{textPassword}</p>
+                                <input
+                                    onChange={handleInputChange}
+                                    type="password"
+                                    name="password"
+                                    className="Registration-inputs"
+                                    value={formData.password}
+                                    placeholder={textPassword}
                                 />
                             </label>
                         </li>
@@ -151,34 +155,44 @@ export const Settings = ({
                             <label>
                                 <p>{textPhotoLink}</p>
                                 <input
-                                    className="Settings-inputs"
                                     onChange={handleInputChange}
                                     type="url"
+                                    name="linkToPhoto"
+                                    className="Registration-inputs"
                                     value={formData.linkToPhoto}
                                     placeholder={textPhotoLink}
                                 />
                             </label>
                         </li>
                         <li>
-                            <button className="Settings-save-btn" type="submit">
-                                <span>{textSave}</span>
+                            <label>
+                                <p>{textProfileType}</p>
+                                <select
+                                    name="profileType"
+                                    onChange={handleInputChange}
+                                    value={formData.profileType}
+                                    className="Registration-select">
+                                    <option value="user">{textUser}</option>
+                                    <option value="admin">{textAdmin}</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <button
+                                className="Registration-register-btn"
+                                type="submit">
+                                <span>{textRegister}</span>
                             </button>
                         </li>
                     </ul>
                 </form>
             </div>
-            {profileType === "admin" ? (
-                <Registration
-                    registerUser={registerUser}
-                    deleteUser={deleteUser}
-                    getAllUsers={getAllUsers}
-                    updateUserPassword={updateUserPassword}
-                    LanguageSets={LanguageSets}
-                    selectedLang={selectedLang}
-                />
-            ) : (
-                ""
-            )}
-        </section>
+            <Users
+                deleteUser={deleteUser}
+                getAllUsers={getAllUsers}
+                LanguageSets={LanguageSets}
+                selectedLang={selectedLang}
+            />
+        </>
     );
 };

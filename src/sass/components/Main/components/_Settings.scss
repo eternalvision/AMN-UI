@@ -1,6 +1,6 @@
 .Settings {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     align-content: center;
     height: 100%;
@@ -9,6 +9,10 @@
         padding: 15px;
         background-color: var(--background-color);
         box-shadow: var(--page-block-shadow);
+    }
+    h2 {
+        color: var(--invert-color);
+        margin-bottom: 20px;
     }
 }
 
