@@ -7,6 +7,11 @@ const ALLOWED_LETTERS =
     "AÁBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ" +
     "aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž";
 
+const ALLOWED_LETTERS_PASSWORD =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    "0123456789" +
+    `-._~:/?#[]@!$&'()*+,;="'^%`;
+
 const ALLOWED_LETTER_USERNAME =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -97,7 +102,53 @@ const PhoneNumberInput = (props) => (
     />
 );
 
-const PasswordInput = (props) => <InputField type="password" {...props} />;
+const PasswordInput = ({
+    text,
+    onChange,
+    name,
+    minLength,
+    maxLength,
+    value,
+    placeholder,
+    visiblePassword,
+    setVisiblePassword,
+    errors,
+    hiddenIco,
+    visibleIco,
+    GetLogo,
+}) => {
+    return (
+        <li className="Registration-Password-Item">
+            <label>
+                <p>{text}</p>
+                <input
+                    onChange={onChange}
+                    type={visiblePassword ? "text" : "password"}
+                    name={name}
+                    minLength={minLength}
+                    maxLength={maxLength}
+                    className="Settings-inputs"
+                    value={value}
+                    placeholder={placeholder}
+                    onKeyDown={(e) => preventInput(e, ALLOWED_LETTERS_PASSWORD)}
+                />
+                {value.length > 0 && (
+                    <button
+                        type="button"
+                        onClick={() => setVisiblePassword(!visiblePassword)}>
+                        {GetLogo &&
+                            (visiblePassword ? (
+                                <GetLogo img={visibleIco} />
+                            ) : (
+                                <GetLogo img={hiddenIco} />
+                            ))}
+                    </button>
+                )}
+            </label>
+            {errors[name] && <span className="error">{errors[name]}</span>}
+        </li>
+    );
+};
 
 const PhotoLinkInput = (props) => (
     <InputField
@@ -111,16 +162,18 @@ export const Form = ({
     LanguageSets,
     selectedLang,
     onSubmit,
-    showProfileType,
-    showPassword,
     initialState,
     textButton,
+    showProfileType,
+    showPassword,
     allFieldsRequired,
     minFieldsRequired,
+    GetLogo,
 }) => {
     const [formData, setFormData] = useState(initialState);
-    const [initialFormData, setInitialFormData] = useState(initialState);
+    const [visiblePassword, setVisiblePassword] = useState(false);
     const [errors, setErrors] = useState({});
+    let initialFormData = initialState;
 
     const validation = ValidationHelper(LanguageSets, selectedLang).validate;
 
@@ -194,6 +247,8 @@ export const Form = ({
         textProfileType,
         textUser,
         textAdmin,
+        showPassIcoHidden,
+        ShowPassIcoVisible,
     } = LanguageSets.RegistrationElements()[selectedLang][0];
 
     return (
@@ -251,13 +306,18 @@ export const Form = ({
                 />
                 {showPassword && (
                     <PasswordInput
-                        errors={errors}
                         text={textPassword}
+                        errors={errors}
                         name="password"
                         onChange={handleInputChange}
                         value={formData.password}
                         minLength={8}
                         placeholder={textPassword}
+                        visiblePassword={visiblePassword}
+                        setVisiblePassword={setVisiblePassword}
+                        hiddenIco={showPassIcoHidden}
+                        visibleIco={ShowPassIcoVisible}
+                        GetLogo={GetLogo}
                     />
                 )}
                 <PhotoLinkInput

@@ -6,6 +6,18 @@ export const ValidationHelper = (LanguageSets, selectedLang) => {
         return validationMessages[type];
     };
 
+    const passwordValidation = (value) => {
+        if (!/[A-Z]{2,}/.test(value))
+            return getValidationMessage("passValidate1");
+        if (!/[a-z]{2,}/.test(value))
+            return getValidationMessage("passValidate2");
+        if (!/[0-9]{2,}/.test(value))
+            return getValidationMessage("passValidate3");
+        if (!/[^a-zA-Z0-9]{2,}/.test(value))
+            return getValidationMessage("passValidate4");
+        if (/\s/.test(value)) return getValidationMessage("passValidate5");
+    };
+
     return {
         validate: {
             name: (value) => {
@@ -28,9 +40,7 @@ export const ValidationHelper = (LanguageSets, selectedLang) => {
                 if (value.length > 15) return getValidationMessage("max", 15);
                 if (value.length < 5) return getValidationMessage("min", 5);
             },
-            password: (value) => {
-                if (value.length < 8) return getValidationMessage("min", 8);
-            },
+            password: passwordValidation,
             linkToPhoto: (value) => {
                 if (value.length > 250) return getValidationMessage("max", 250);
                 if (value.length < 5) return getValidationMessage("min", 5);

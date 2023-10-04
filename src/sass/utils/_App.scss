@@ -56,12 +56,6 @@ input {
     &:focus {
         outline: none;
     }
-    &:not(:placeholder-shown):invalid {
-        background-color: var(--link-hover-dark);
-    }
-    &:not(:placeholder-shown):valid {
-        background-color: var(--grin-light);
-    }
 }
 
 .error {

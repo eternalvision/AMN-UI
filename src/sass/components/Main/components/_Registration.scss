@@ -19,10 +19,10 @@
                     padding-left: 20px;
                 }
             }
-            &:last-child {
-                display: flex;
-                justify-content: flex-end;
-            }
+            // &:last-child {
+            //     display: flex;
+            //     justify-content: flex-end;
+            // }
         }
     }
 }
@@ -85,4 +85,33 @@
             }
         }
     }
+}
+
+.Registration-Password-Item {
+    label {
+        input {
+            position: relative;
+        }
+        button {
+            position: absolute;
+            right: 15px;
+            background-color: var(--transparent);
+            margin: 5px 0px 0px 0px;
+            border-radius: 50%;
+            cursor: pointer;
+            svg {
+                transform: scale(1.5);
+            }
+        }
+    }
+}
+
+.UserSearch {
+    padding: 10px;
+    padding-left: 20px;
+    margin: 0px 0px 20px 5px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--page-block-shadow);
+    background-color: var(--bg-color);
+    color: var(--invert-color);
 }

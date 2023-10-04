@@ -1,4 +1,4 @@
-import SettingsComponents from "./components";
+import { SettingsComponents } from "./components/SettingsComponents";
 
 const { Registration, Form } = SettingsComponents;
 
@@ -53,6 +53,7 @@ export const Settings = ({
                     minFieldsRequired={1}
                     textButton={textSave}
                     allFieldsRequired={false}
+                    GetLogo={GetLogo}
                 />
             </div>
             {profileType === "admin" && (

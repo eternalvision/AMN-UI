@@ -84,7 +84,7 @@ const HotelCard = ({
                 );
 
                 return (
-                    <li key={positionId}>
+                    <li className="Employee-CardItems" key={positionId}>
                         {filteredEmployees.map(
                             ({ name, hours, rate, amount, recordId }) => {
                                 return (

@@ -3,11 +3,9 @@ import { Registration } from "./AdminFunctions/Registration";
 import { Users } from "./AdminFunctions/Users";
 import { ValidationHelper } from "./Form/ValidationHelper";
 
-const SettingsComponents = {
+export const SettingsComponents = {
     Form,
     Registration,
     Users,
     ValidationHelper,
 };
-
-export default SettingsComponents;

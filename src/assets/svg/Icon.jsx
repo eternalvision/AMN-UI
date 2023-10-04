@@ -118,6 +118,12 @@ import {
     // * delete
     RiDeleteBin7Line,
     RiDeleteBin7Fill,
+
+    //* Password Show
+    RiLockFill,
+    RiLockLine,
+    RiLockUnlockFill,
+    RiLockUnlockLine,
 } from "react-icons/ri";
 
 export const Icon = {
@@ -181,4 +187,8 @@ export const Icon = {
     RiSearch2Fill,
     RiDeleteBin7Line,
     RiDeleteBin7Fill,
+    RiLockFill,
+    RiLockLine,
+    RiLockUnlockFill,
+    RiLockUnlockLine,
 };

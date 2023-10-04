@@ -17,7 +17,8 @@ export const Registration = ({
         email: "",
         username: "",
         password: "",
-        linkToPhoto: "",
+        linkToPhoto:
+            "https://i.ibb.co/bRLH3S4/istockphoto-1276619045-612x612.jpg",
         profileType: "",
     };
 
@@ -54,6 +55,7 @@ export const Registration = ({
                     showProfileType={true}
                     showPassword={true}
                     minFieldsRequired={Object.keys(initialState).length}
+                    GetLogo={GetLogo}
                 />
             </div>
             <Users

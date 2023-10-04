@@ -33,7 +33,7 @@
 .Employee-btns {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
 
     margin-left: 10px;
     li {
@@ -131,13 +131,12 @@
     &:last-child {
         margin-right: 1px;
     }
-    li {
-        &:last-child {
-            display: flex;
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
-    }
+}
+
+.Employee-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .Employee-category {
@@ -215,14 +214,13 @@
     margin: 5px;
     position: relative;
     left: 0;
-    height: 100%;
-    width: 100%;
-    li:last-child {
-        max-width: 510px;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        display: flex;
-    }
+    // height: 100%;
+}
+
+.Employee-CardItems {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    display: flex;
 }
 
 .Employee {

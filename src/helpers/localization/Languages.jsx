@@ -91,7 +91,7 @@ export const Languages = {
             ],
         };
     },
-    MenuInterfaceButtons: ({ username }) => {
+    MenuInterfaceButtons: () => {
         return {
             cz: [
                 {
@@ -647,6 +647,8 @@ export const Languages = {
                     textRegister: "Registrovat",
                     textUser: "Uživatel",
                     textAdmin: "Správce",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
                 },
             ],
             en: [
@@ -663,6 +665,8 @@ export const Languages = {
                     textRegister: "Register",
                     textUser: "User",
                     textAdmin: "Administrator",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
                 },
             ],
             ua: [
@@ -679,6 +683,8 @@ export const Languages = {
                     textRegister: "Зареєструватися",
                     textUser: "Користувач",
                     textAdmin: "Адміністратор",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
                 },
             ],
             ru: [
@@ -695,6 +701,8 @@ export const Languages = {
                     textRegister: "Зарегистрироваться",
                     textUser: "Пользователь",
                     textAdmin: "Администратор",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
                 },
             ],
         };
@@ -737,24 +745,44 @@ export const Languages = {
                 {
                     min: `Minimální ${num} znaky!`,
                     max: `Maximálně ${num} znaky!`,
+                    passValidate1: "Alespoň 2 velká písmena!",
+                    passValidate2: "Alespoň 2 malá písmena!",
+                    passValidate3: "Alespoň 2 čísla!",
+                    passValidate4: "Alespoň 2 speciální znaky!",
+                    passValidate5: "Mezery v hesle nejsou povoleny!",
                 },
             ],
             en: [
                 {
                     min: `Minimum ${num} characters!`,
                     max: `Maximum of ${num} characters!`,
+                    passValidate1: "At least 2 uppercase letters required!",
+                    passValidate2: "At least 2 lowercase letters required!",
+                    passValidate3: "At least 2 numbers required!",
+                    passValidate4: "At least 2 special characters required!",
+                    passValidate5: "Spaces in the password are not allowed!",
                 },
             ],
             ua: [
                 {
                     min: `Мінімум ${num} символів!`,
                     max: `Максимум ${num} символів!`,
+                    passValidate1: "Потрібно мінімум 2 великі літери!",
+                    passValidate2: "Потрібно мінімум 2 малі літери!",
+                    passValidate3: "Потрібно мінімум 2 числа!",
+                    passValidate4: "Потрібно мінімум 2 спеціальні символи!",
+                    passValidate5: "Пробіли в паролі не дозволені!",
                 },
             ],
             ru: [
                 {
                     min: `Минимум ${num} символов!`,
                     max: `Максимум ${num} символов!`,
+                    passValidate1: "Необходимо минимум 2 заглавные буквы!",
+                    passValidate2: "Необходимо минимум 2 строчных буквы!",
+                    passValidate3: "Необходимо минимум 2 цифры!",
+                    passValidate4: "Необходимо минимум 2 специальных символа!",
+                    passValidate5: "Пробелы в пароле не допускаются!",
                 },
             ],
         };

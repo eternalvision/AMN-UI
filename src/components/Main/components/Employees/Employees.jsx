@@ -17,7 +17,8 @@ export const Employees = ({
     const Values = LanguageSets.CardInterfaceElements()[selectedLang];
     const navigate = useNavigate();
     const { currentYear, setCurrentYear, month, setMonth } = useCurrentDate();
-    const { items } = useFetchData({
+
+    const { items, nextMonthDataExists, prevMonthDataExists } = useFetchData({
         currentYear,
         month,
         asmisToken: userData.asmisToken,
@@ -45,6 +46,8 @@ export const Employees = ({
                             LanguageSets={LanguageSets}
                             selectedLang={selectedLang}
                             GetLogo={GetLogo}
+                            nextMonthDataExists={nextMonthDataExists}
+                            prevMonthDataExists={prevMonthDataExists}
                         />
                         <div className="Employee-data">
                             {data.Employees.map(
@@ -76,7 +79,7 @@ export const Employees = ({
                                                 />
                                             </b>
                                         </li>
-                                        <li>
+                                        <li className="Employee-cards">
                                             <EmployeeCards
                                                 hotels={hotels}
                                                 NumberFormatter={
