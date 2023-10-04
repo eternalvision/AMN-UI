@@ -587,6 +587,7 @@ export const Languages = {
                     textPhoneNumber: "Telefonní číslo",
                     textPhotoLink: "Odkaz na fotografii",
                     textSave: "Uložit",
+                    textPassword: "Heslo",
                 },
             ],
             en: [
@@ -599,6 +600,7 @@ export const Languages = {
                     textPhoneNumber: "Phone Number",
                     textPhotoLink: "Photo link",
                     textSave: "Save",
+                    textPassword: "Password",
                 },
             ],
             ua: [
@@ -611,6 +613,7 @@ export const Languages = {
                     textPhoneNumber: "Номер телефону",
                     textPhotoLink: "Посилання на фото",
                     textSave: "Зберегти",
+                    textPassword: "Пароль",
                 },
             ],
             ru: [
@@ -623,6 +626,7 @@ export const Languages = {
                     textPhoneNumber: "Номер телефона",
                     textPhotoLink: "Ссылка на фото",
                     textSave: "Сохранить",
+                    textPassword: "Пароль",
                 },
             ],
         };
@@ -701,24 +705,56 @@ export const Languages = {
                 {
                     textTitle: "Seznam uživatelů",
                     deleteText: "Smazat uživatele",
+                    deleteIcon: "DeleteBin7",
                 },
             ],
             en: [
                 {
                     textTitle: "Users",
                     deleteText: "Delete user",
+                    deleteIcon: "DeleteBin7",
                 },
             ],
             ua: [
                 {
                     textTitle: "Користувачі",
                     deleteText: "Видалити користувача",
+                    deleteIcon: "DeleteBin7",
                 },
             ],
             ru: [
                 {
                     textTitle: "Пользователи",
                     deleteText: "Удалить пользователя",
+                    deleteIcon: "DeleteBin7",
+                },
+            ],
+        };
+    },
+    ValidationElements: ({ num }) => {
+        return {
+            cz: [
+                {
+                    min: `Minimální ${num} znaky!`,
+                    max: `Maximálně ${num} znaky!`,
+                },
+            ],
+            en: [
+                {
+                    min: `Minimum ${num} characters!`,
+                    max: `Maximum of ${num} characters!`,
+                },
+            ],
+            ua: [
+                {
+                    min: `Мінімум ${num} символів!`,
+                    max: `Максимум ${num} символів!`,
+                },
+            ],
+            ru: [
+                {
+                    min: `Минимум ${num} символов!`,
+                    max: `Максимум ${num} символов!`,
                 },
             ],
         };

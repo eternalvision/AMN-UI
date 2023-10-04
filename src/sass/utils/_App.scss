@@ -52,8 +52,33 @@ a {
     padding: 5px;
 }
 
-input:not(:placeholder-shown):invalid {
-    background-color: red;
+input {
+    &:focus {
+        outline: none;
+    }
+    &:not(:placeholder-shown):invalid {
+        background-color: var(--link-hover-dark);
+    }
+    &:not(:placeholder-shown):valid {
+        background-color: var(--grin-light);
+    }
+}
+
+.error {
+    padding: 5px 10px;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    background-color: var(--invert-color);
+    color: var(--link-hover-dark);
+    font-weight: bold;
+    border-radius: var(--border-radius);
+}
+
+.DisabledButton {
+    cursor: default !important;
+    pointer-events: none !important;
+    display: none !important;
 }
 
 button {

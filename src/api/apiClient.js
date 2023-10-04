@@ -97,9 +97,13 @@ const getAllUsers = async () => {
 
 const updateUserPassword = async (workerId, newPassword) => {
     try {
-        const response = await axios.patch(`/auth/users/${workerId}/password`, {
-            password: newPassword,
-        });
+        const response = await axios.patch(
+            `/profile/update/password${workerId}`,
+            {
+                password: newPassword,
+            }
+        );
+        token.set();
         return response.data;
     } catch (error) {
         handleError(error);

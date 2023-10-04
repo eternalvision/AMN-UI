@@ -23,10 +23,9 @@ export const useFetchData = ({ currentYear, month, asmisToken }) => {
                         result: response,
                         error: "",
                     });
-                    console.log(response.status, response.statusText);
                 }
             } catch (err) {
-                console.error("Error fetching data:", err);
+                console.error(err);
                 setDataState((prevState) => ({
                     ...prevState,
                     error: err.response.data,

@@ -114,6 +114,10 @@ import {
     //* search
     RiSearch2Line,
     RiSearch2Fill,
+
+    // * delete
+    RiDeleteBin7Line,
+    RiDeleteBin7Fill,
 } from "react-icons/ri";
 
 export const Icon = {
@@ -175,4 +179,6 @@ export const Icon = {
     RiUser3Fill,
     RiSearch2Line,
     RiSearch2Fill,
+    RiDeleteBin7Line,
+    RiDeleteBin7Fill,
 };

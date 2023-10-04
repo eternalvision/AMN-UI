@@ -61,6 +61,7 @@ export const RoutesComponent = ({
                             deleteUser={deleteUser}
                             getAllUsers={getAllUsers}
                             updateUserPassword={updateUserPassword}
+                            username={username}
                         />
                     }
                 />

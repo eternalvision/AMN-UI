@@ -62,16 +62,43 @@ a {
   padding: 5px;
 }
 
+input:focus {
+  outline: none;
+}
 input:not(:-moz-placeholder-shown):invalid {
-  background-color: red;
+  background-color: var(--link-hover-dark);
 }
-
 input:not(:-ms-input-placeholder):invalid {
-  background-color: red;
+  background-color: var(--link-hover-dark);
+}
+input:not(:placeholder-shown):invalid {
+  background-color: var(--link-hover-dark);
+}
+input:not(:-moz-placeholder-shown):valid {
+  background-color: var(--grin-light);
+}
+input:not(:-ms-input-placeholder):valid {
+  background-color: var(--grin-light);
+}
+input:not(:placeholder-shown):valid {
+  background-color: var(--grin-light);
 }
 
-input:not(:placeholder-shown):invalid {
-  background-color: red;
+.error {
+  padding: 5px 10px;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  background-color: var(--invert-color);
+  color: var(--link-hover-dark);
+  font-weight: bold;
+  border-radius: var(--border-radius);
+}
+
+.DisabledButton {
+  cursor: default !important;
+  pointer-events: none !important;
+  display: none !important;
 }
 
 button {
@@ -252,13 +279,13 @@ body::-webkit-scrollbar-button:vertical:end:increment {
   --preloader-dark-bg: #222222;
   --transparent-color: rgba(255, 255, 255, 0);
   --link-hover-light: #dc7575;
-  --link-hover-dark: #dc7575;
+  --link-hover-dark: #bd4545;
   --gray_light: #b7b7b7;
   --gray_dark: #424242;
   --separator_common-light: var(--gray_light);
   --separator_common-dark: var(--gray_dark);
   --thin-border: 1px;
-  --grin-light: #66e390;
+  --grin-light: #398652;
   --grin-dark: #607f78;
 }
 
@@ -1484,15 +1511,32 @@ thead tr td span {
   font-size: 20px;
 }
 .User-list__items ul li img {
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   margin-right: 15px;
 }
 .User-list__items ul li:last-child button {
-  padding: 10px;
-  border-radius: var(--border-radius);
+  padding: 10px 11px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
+  background-color: var(--invert-color);
   cursor: pointer;
+}
+.User-list__items ul li:last-child button svg {
+  fill: var(--search-input-bg);
 }
 
 .Main {

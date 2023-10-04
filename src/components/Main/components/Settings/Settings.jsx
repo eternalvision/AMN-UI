@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Registration } from "./components/Registration";
+import SettingsComponents from "./components";
+
+const { Registration, Form } = SettingsComponents;
 
 export const Settings = ({
     LanguageSets,
@@ -10,18 +11,11 @@ export const Settings = ({
     deleteUser,
     getAllUsers,
     updateUserPassword,
+    GetLogo,
+    username,
 }) => {
-    const Values = LanguageSets.SettingsElements()[selectedLang][0];
-    const {
-        textName,
-        textSurname,
-        textUsername,
-        textEmail,
-        textPhoneNumber,
-        textPhotoLink,
-        textSave,
-        textTitle,
-    } = Values;
+    const { textSave, textTitle } =
+        LanguageSets.SettingsElements()[selectedLang][0];
 
     const initialState = {
         name: "",
@@ -32,142 +26,36 @@ export const Settings = ({
         linkToPhoto: "",
     };
 
-    const [originalData, setOriginalData] = useState(initialState);
-
-    const [formData, setFormData] = useState(initialState);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value.trim(),
-        }));
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const updatedFields = Object.entries(formData).reduce(
-            (acc, [key, value]) => {
-                if (originalData[key] !== value) {
-                    acc[key] = value;
-                }
-                return acc;
-            },
-            {}
-        );
-
-        const result = updateUserFinanceInfo(updatedFields);
-        if (result) {
-            window.location.reload();
+    const handleSubmit = async (formData) => {
+        if (Object.values(formData).every((val) => !val)) {
+            return;
         }
 
-        clearInput();
-    };
-
-    const clearInput = () => {
-        setFormData(initialState);
+        try {
+            const result = await updateUserFinanceInfo(formData);
+            if (result) {
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
         <section className="Settings">
             <div>
                 <h2 style={{ marginBottom: "20px" }}>{textTitle}</h2>
-                <form className="Settings-form" onSubmit={handleSubmit}>
-                    <ul>
-                        <li>
-                            <label>
-                                <p>{textName}</p>
-                                <input
-                                    onChange={handleInputChange}
-                                    type="name"
-                                    name="name"
-                                    className="Settings-inputs"
-                                    value={formData.name}
-                                    placeholder={textName}
-                                />
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <p>{textSurname}</p>
-                                <input
-                                    onChange={handleInputChange}
-                                    type="surname"
-                                    name="surname"
-                                    className="Settings-inputs"
-                                    value={formData.surname}
-                                    placeholder={textSurname}
-                                />
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <p>{textUsername}</p>
-                                <input
-                                    onChange={handleInputChange}
-                                    type="username"
-                                    name="username"
-                                    className="Settings-inputs"
-                                    value={formData.username}
-                                    placeholder={textUsername}
-                                />
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <p>{textEmail}</p>
-                                <input
-                                    onChange={handleInputChange}
-                                    type="email"
-                                    name="email"
-                                    lang="en"
-                                    className="Settings-inputs"
-                                    maxLength="254"
-                                    value={formData.email}
-                                    placeholder={textEmail}
-                                    autoCapitalize="off"
-                                    spellCheck="false"
-                                    autoCorrect="off"
-                                    inputMode="email"
-                                />
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <p>{textPhoneNumber}</p>
-                                <input
-                                    className="Settings-inputs"
-                                    onChange={handleInputChange}
-                                    type="tel"
-                                    id="phone"
-                                    name="phoneNumber"
-                                    value={formData.phone}
-                                    placeholder={textPhoneNumber}
-                                />
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <p>{textPhotoLink}</p>
-                                <input
-                                    className="Settings-inputs"
-                                    onChange={handleInputChange}
-                                    type="url"
-                                    value={formData.linkToPhoto}
-                                    placeholder={textPhotoLink}
-                                />
-                            </label>
-                        </li>
-                        <li>
-                            <button className="Settings-save-btn" type="submit">
-                                <span>{textSave}</span>
-                            </button>
-                        </li>
-                    </ul>
-                </form>
+                <Form
+                    LanguageSets={LanguageSets}
+                    selectedLang={selectedLang}
+                    onSubmit={handleSubmit}
+                    initialState={initialState}
+                    minFieldsRequired={1}
+                    textButton={textSave}
+                    allFieldsRequired={false}
+                />
             </div>
-            {profileType === "admin" ? (
+            {profileType === "admin" && (
                 <Registration
                     registerUser={registerUser}
                     deleteUser={deleteUser}
@@ -175,9 +63,10 @@ export const Settings = ({
                     updateUserPassword={updateUserPassword}
                     LanguageSets={LanguageSets}
                     selectedLang={selectedLang}
+                    GetLogo={GetLogo}
+                    Form={Form}
+                    username={username}
                 />
-            ) : (
-                ""
             )}
         </section>
     );
