@@ -714,6 +714,7 @@ export const Languages = {
                     textTitle: "Seznam uživatelů",
                     deleteText: "Smazat uživatele",
                     deleteIcon: "DeleteBin7",
+                    searchText: "Vyhledávání",
                 },
             ],
             en: [
@@ -721,6 +722,7 @@ export const Languages = {
                     textTitle: "Users",
                     deleteText: "Delete user",
                     deleteIcon: "DeleteBin7",
+                    searchText: "Search",
                 },
             ],
             ua: [
@@ -728,6 +730,7 @@ export const Languages = {
                     textTitle: "Користувачі",
                     deleteText: "Видалити користувача",
                     deleteIcon: "DeleteBin7",
+                    searchText: "Пошук",
                 },
             ],
             ru: [
@@ -735,6 +738,7 @@ export const Languages = {
                     textTitle: "Пользователи",
                     deleteText: "Удалить пользователя",
                     deleteIcon: "DeleteBin7",
+                    searchText: "Поиск",
                 },
             ],
         };
@@ -750,6 +754,7 @@ export const Languages = {
                     passValidate3: "Alespoň 2 čísla!",
                     passValidate4: "Alespoň 2 speciální znaky!",
                     passValidate5: "Mezery v hesle nejsou povoleny!",
+                    emailValidate1: "E-mail by měl obsahovat @!",
                 },
             ],
             en: [
@@ -761,6 +766,7 @@ export const Languages = {
                     passValidate3: "At least 2 numbers required!",
                     passValidate4: "At least 2 special characters required!",
                     passValidate5: "Spaces in the password are not allowed!",
+                    emailValidate1: "Email should contain @!",
                 },
             ],
             ua: [
@@ -772,6 +778,7 @@ export const Languages = {
                     passValidate3: "Потрібно мінімум 2 числа!",
                     passValidate4: "Потрібно мінімум 2 спеціальні символи!",
                     passValidate5: "Пробіли в паролі не дозволені!",
+                    emailValidate1: "Email повинен містити @!",
                 },
             ],
             ru: [
@@ -783,6 +790,44 @@ export const Languages = {
                     passValidate3: "Необходимо минимум 2 цифры!",
                     passValidate4: "Необходимо минимум 2 специальных символа!",
                     passValidate5: "Пробелы в пароле не допускаются!",
+                    emailValidate1: "Email должен содержать @!",
+                },
+            ],
+        };
+    },
+
+    PasswordValidate: () => {
+        return {
+            cz: [
+                {
+                    textPassword: "Heslo",
+                    textPasswordEdit: "Změnit heslo",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
+                },
+            ],
+            en: [
+                {
+                    textPassword: "Password",
+                    textPasswordEdit: "Change password",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
+                },
+            ],
+            ua: [
+                {
+                    textPassword: "Пароль",
+                    textPasswordEdit: "Змінити пароль",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
+                },
+            ],
+            ru: [
+                {
+                    textPassword: "Пароль",
+                    textPasswordEdit: "Изменить пароль",
+                    showPassIcoHidden: "Lock",
+                    ShowPassIcoVisible: "LockUnlock",
                 },
             ],
         };

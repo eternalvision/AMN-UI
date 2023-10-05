@@ -15,8 +15,14 @@ import "normalize.css";
 import "tabulator-tables/dist/css/tabulator.min.css";
 import "./css/index.min.css";
 
-const { LanguageProvider, useLanguage, DarkModeProvider, useDarkMode } =
-    Context;
+const {
+    LanguageProvider,
+    useLanguage,
+    DarkModeProvider,
+    useDarkMode,
+    UserDataProvider,
+    useUserData,
+} = Context;
 const {
     useFetchData,
     useCurrentDate,
@@ -64,6 +70,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     ApiRequests={ApiRequests}
                     Login={Login}
                     LanguageProvider={LanguageProvider}
+                    UserDataProvider={UserDataProvider}
+                    useUserData={useUserData}
                 />
             </DarkModeProvider>
         </BrowserRouter>

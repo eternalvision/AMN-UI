@@ -1,6 +1,25 @@
-export const Profile = ({ userData }) => {
-    const { name, surname, username, phoneNumber, email, linkToPhoto } =
-        userData;
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+export const Profile = ({ getUserByUsername }) => {
+    const { username } = useParams();
+    const [userData, setUserData] = useState({});
+
+    const { name, surname, phoneNumber, email, linkToPhoto } = userData;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getUserByUsername(username);
+                setUserData(data.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, [username, getUserByUsername]);
+
     return (
         <section className="Profile">
             <div>

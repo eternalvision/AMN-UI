@@ -14,6 +14,10 @@
           box-sizing: border-box;
 }
 
+editor-squiggler {
+  display: none !important;
+}
+
 html,
 body {
   height: 100%;
@@ -367,9 +371,9 @@ body.dark {
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
   top: 55px;
-  left: 0px;
+  right: 0px;
   position: absolute;
-  padding: 0px 5px 5px 5px;
+  padding: 5px 10px 10px 10px;
 }
 .Dropdown ul li {
   font-size: 22px;
@@ -389,10 +393,10 @@ body.dark {
   margin: 0px 15px;
 }
 .Dropdown ul li a:hover {
-  background-color: var(--gray) !important;
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
+  background-color: var(--background-color);
 }
 
 .activeLanguage {
@@ -730,11 +734,11 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .Employee-category {
@@ -802,7 +806,7 @@ form {
   position: sticky;
   background-color: var(--bg-color);
   padding: 4px 0px 0px;
-  top: -5px;
+  top: -10px;
   z-index: 3;
 }
 .Employee-hotel__block ul {
@@ -886,6 +890,9 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 10px 0px 20px;
 }
 .Employee-filter label {
@@ -1342,13 +1349,11 @@ thead tr td span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   height: 100%;
 }
 .Settings div {
@@ -1357,6 +1362,7 @@ thead tr td span {
   background-color: var(--background-color);
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
+  margin: 10px;
 }
 .Settings h2 {
   color: var(--invert-color);
@@ -1404,6 +1410,7 @@ thead tr td span {
           box-shadow: var(--page-block-shadow);
   background-color: var(--bg-color);
   color: var(--invert-color);
+  cursor: pointer;
 }
 
 .Registration-form ul li {
@@ -1457,7 +1464,6 @@ thead tr td span {
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
   border-radius: var(--border-radius);
-  padding: 10px;
   margin: 5px;
 }
 
@@ -1473,24 +1479,32 @@ thead tr td span {
           justify-content: space-between;
 }
 .User-list__items ul li {
+  width: 100%;
+}
+.User-list__items ul li a {
+  background-color: var(--gray);
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: var(--page-block-shadow);
+          box-shadow: var(--page-block-shadow);
+  padding: 10px 20px 10px 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-right: 15px;
   color: var(--invert-color);
   font-size: 20px;
 }
-.User-list__items ul li img {
+.User-list__items ul li a img {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
   margin-right: 15px;
 }
 .User-list__items ul li:last-child button {
-  padding: 10px 11px;
+  margin: 15px;
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1529,8 +1543,9 @@ thead tr td span {
 }
 
 .UserSearch {
-  padding: 10px;
+  padding: 5px;
   padding-left: 20px;
+  font-size: 20px;
   margin: 0px 0px 20px 5px;
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--page-block-shadow);
@@ -1601,7 +1616,7 @@ thead tr td span {
   overflow-y: auto;
   background-color: var(--bg-color);
   border-radius: var(--border-radius);
-  padding: 5px 10px;
+  padding: 10px;
 }
 .Rear-block::-webkit-scrollbar {
   width: 12px;

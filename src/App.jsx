@@ -24,6 +24,8 @@ export const App = ({
     ApiRequests,
     Login,
     LanguageProvider,
+
+    useUserData,
 }) => {
     useDisableEvents();
     const { loginUser, logoutUser, getCurrentUser, updateUserFinanceInfo } =
@@ -39,16 +41,17 @@ export const App = ({
                     const user = await getCurrentUser(token);
                     setCurrentUser(user);
                 } catch (error) {
-                    console.error("Error fetching user:", error);
+                    console.error(error);
                 }
             };
 
             fetchAndSetUser();
         }
     }, [getCurrentUser, token]);
+
     const userData = currentUser?.data || null;
 
-    if (!token)
+    if (!token) {
         return (
             <Login
                 onLoginSuccess={() => window.location.reload()}
@@ -56,8 +59,7 @@ export const App = ({
                 useCookieStorageState={useCookieStorageState}
             />
         );
-
-    if (userData)
+    } else if (userData) {
         return (
             <LanguageProvider initialLanguage={userData.language}>
                 <ClassToggler useLocalStorageState={useLocalStorageState}>
@@ -96,4 +98,5 @@ export const App = ({
                 </ClassToggler>
             </LanguageProvider>
         );
+    }
 };

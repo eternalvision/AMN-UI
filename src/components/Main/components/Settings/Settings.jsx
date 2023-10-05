@@ -1,6 +1,6 @@
 import { SettingsComponents } from "./components/SettingsComponents";
 
-const { Registration, Form } = SettingsComponents;
+const { Registration, Form, ChangePasswordForm } = SettingsComponents;
 
 export const Settings = ({
     LanguageSets,
@@ -13,6 +13,7 @@ export const Settings = ({
     updateUserPassword,
     GetLogo,
     username,
+    workerId,
 }) => {
     const { textSave, textTitle } =
         LanguageSets.SettingsElements()[selectedLang][0];
@@ -43,19 +44,30 @@ export const Settings = ({
 
     return (
         <section className="Settings">
-            <div>
-                <h2 style={{ marginBottom: "20px" }}>{textTitle}</h2>
-                <Form
-                    LanguageSets={LanguageSets}
-                    selectedLang={selectedLang}
-                    onSubmit={handleSubmit}
-                    initialState={initialState}
-                    minFieldsRequired={1}
-                    textButton={textSave}
-                    allFieldsRequired={false}
-                    GetLogo={GetLogo}
-                />
-            </div>
+            <section>
+                <div>
+                    <h2 style={{ marginBottom: "20px" }}>{textTitle}</h2>
+                    <Form
+                        LanguageSets={LanguageSets}
+                        selectedLang={selectedLang}
+                        onSubmit={handleSubmit}
+                        initialState={initialState}
+                        minFieldsRequired={1}
+                        textButton={textSave}
+                        allFieldsRequired={false}
+                        GetLogo={GetLogo}
+                    />
+                </div>
+                <div>
+                    <ChangePasswordForm
+                        LanguageSets={LanguageSets}
+                        selectedLang={selectedLang}
+                        updateUserPassword={updateUserPassword}
+                        workerId={workerId}
+                        GetLogo={GetLogo}
+                    />
+                </div>
+            </section>
             {profileType === "admin" && (
                 <Registration
                     registerUser={registerUser}

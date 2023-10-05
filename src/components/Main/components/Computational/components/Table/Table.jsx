@@ -19,7 +19,7 @@ export const Table = ({
                 const data = await getWorkerData();
                 setDatabaseRecords(data.data);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error(error);
             }
         };
 
@@ -28,44 +28,47 @@ export const Table = ({
 
     const calculateFields = useCallback(
         ({ hours, rate, total_deductions, compensation, gross_wages }) => {
-            let amount = parseFloat((hours * rate).toFixed(2));
-            let total_internal_costs = parseFloat(
-                (amount + total_deductions - compensation).toFixed(2)
-            );
+            // Явное преобразование значений к числу
+            hours = +hours;
+            rate = +rate;
+            total_deductions = +total_deductions;
+            compensation = +compensation;
+            gross_wages = +gross_wages;
+
+            let amount = +(hours * rate).toFixed(2);
+            let total_internal_costs = +(
+                amount +
+                total_deductions -
+                compensation
+            ).toFixed(2);
 
             let internal_costs_according_to_the_formula = 0;
-            if (gross_wages !== "" && gross_wages != null) {
-                gross_wages = parseFloat(gross_wages);
+            if (gross_wages !== 0) {
+                // Изменено с проверки на пустую строку и null на проверку на 0
                 if (gross_wages < 17300) {
-                    internal_costs_according_to_the_formula = parseFloat(
-                        (gross_wages * 0.313 + 17300 * 0.135).toFixed(2)
-                    );
+                    internal_costs_according_to_the_formula = +(
+                        gross_wages * 0.313 +
+                        17300 * 0.135
+                    ).toFixed(2);
                 } else if (gross_wages < 42300) {
-                    internal_costs_according_to_the_formula = parseFloat(
-                        (
-                            gross_wages * 0.313 +
-                            17300 * 0.135 +
-                            gross_wages * 0.15 -
-                            2570
-                        ).toFixed(2)
-                    );
+                    internal_costs_according_to_the_formula = +(
+                        gross_wages * 0.313 +
+                        17300 * 0.135 +
+                        gross_wages * 0.15 -
+                        2570
+                    ).toFixed(2);
                 } else {
-                    internal_costs_according_to_the_formula = parseFloat(
-                        (
-                            gross_wages * 0.448 +
-                            gross_wages * 0.15 -
-                            2570
-                        ).toFixed(2)
-                    );
+                    internal_costs_according_to_the_formula = +(
+                        gross_wages * 0.448 +
+                        gross_wages * 0.15 -
+                        2570
+                    ).toFixed(2);
                 }
             }
 
-            let difference_fact_formula = parseFloat(
-                (
-                    total_internal_costs -
-                    internal_costs_according_to_the_formula
-                ).toFixed(2)
-            );
+            let difference_fact_formula = +(
+                total_internal_costs - internal_costs_according_to_the_formula
+            ).toFixed(2);
 
             return {
                 amount,

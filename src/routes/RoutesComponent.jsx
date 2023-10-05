@@ -24,9 +24,10 @@ export const RoutesComponent = ({
         deleteUser,
         getAllUsers,
         updateUserPassword,
+        getUserByUsername,
     } = ApiRequests;
 
-    const { username, profileType } = userData;
+    const { username, profileType, workerId } = userData;
     if (userData) {
         return (
             <Routes>
@@ -62,20 +63,13 @@ export const RoutesComponent = ({
                             getAllUsers={getAllUsers}
                             updateUserPassword={updateUserPassword}
                             username={username}
+                            workerId={workerId}
                         />
                     }
                 />
                 <Route
-                    path={`/${username}`}
-                    element={
-                        <Profile
-                            GetLogo={GetLogo}
-                            LanguageSets={LanguageSets}
-                            selectedLang={selectedLang}
-                            userData={userData}
-                            Loader={Loader}
-                        />
-                    }
+                    path={`/:username`}
+                    element={<Profile getUserByUsername={getUserByUsername} />}
                 />
                 <Route
                     path={`/computational/:date/:category`}
@@ -107,9 +101,11 @@ export const RoutesComponent = ({
             </Routes>
         );
     } else {
-        <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>;
+        return (
+            <Routes>
+                <Route path="*" element={<Navigate to="/login" />} />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        );
     }
 };

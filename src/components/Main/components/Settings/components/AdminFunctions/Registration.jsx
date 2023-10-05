@@ -19,7 +19,7 @@ export const Registration = ({
         password: "",
         linkToPhoto:
             "https://i.ibb.co/bRLH3S4/istockphoto-1276619045-612x612.jpg",
-        profileType: "",
+        profileType: "user",
     };
 
     const handleSubmit = async (formData) => {

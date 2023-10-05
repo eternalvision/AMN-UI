@@ -1,50 +1,52 @@
 export const ValidationHelper = (LanguageSets, selectedLang) => {
     const getValidationMessage = (type, num) => {
-        const validationMessages = LanguageSets.ValidationElements({ num })[
-            selectedLang
-        ][0];
-        return validationMessages[type];
+        return LanguageSets.ValidationElements({ num })[selectedLang][0][type];
     };
 
     const passwordValidation = (value) => {
-        if (!/[A-Z]{2,}/.test(value))
-            return getValidationMessage("passValidate1");
-        if (!/[a-z]{2,}/.test(value))
-            return getValidationMessage("passValidate2");
-        if (!/[0-9]{2,}/.test(value))
-            return getValidationMessage("passValidate3");
-        if (!/[^a-zA-Z0-9]{2,}/.test(value))
-            return getValidationMessage("passValidate4");
-        if (/\s/.test(value)) return getValidationMessage("passValidate5");
+        let upperCaseCount = 0;
+        let lowerCaseCount = 0;
+        let digitCount = 0;
+        let specialCharCount = 0;
+
+        for (let char of value) {
+            if (char >= "A" && char <= "Z") upperCaseCount++;
+            else if (char >= "a" && char <= "z") lowerCaseCount++;
+            else if (char >= "0" && char <= "9") digitCount++;
+            else if (char.trim()) specialCharCount++;
+        }
+
+        if (upperCaseCount < 2) return getValidationMessage("passValidate1");
+        if (lowerCaseCount < 2) return getValidationMessage("passValidate2");
+        if (digitCount < 2) return getValidationMessage("passValidate3");
+        if (specialCharCount < 2) return getValidationMessage("passValidate4");
+        if (value.includes(" ")) return getValidationMessage("passValidate5");
+    };
+
+    const lengthValidation = (min, max, type) => (value) => {
+        if (value.length < min) return getValidationMessage("min", min);
+        if (value.length > max) return getValidationMessage("max", max);
+    };
+
+    const emailValidation = (value) => {
+        if (!value.includes("@")) {
+            return getValidationMessage("emailValidate1");
+        }
     };
 
     return {
         validate: {
-            name: (value) => {
-                if (value.length < 3) return getValidationMessage("min", 3);
-                if (value.length > 20) return getValidationMessage("max", 20);
-            },
-            surname: (value) => {
-                if (value.length < 3) return getValidationMessage("min", 3);
-                if (value.length > 20) return getValidationMessage("max", 20);
-            },
-            username: (value) => {
-                if (value.length < 5) return getValidationMessage("min", 5);
-                if (value.length > 15) return getValidationMessage("max", 15);
-            },
+            name: lengthValidation(3, 20),
+            surname: lengthValidation(3, 20),
+            username: lengthValidation(5, 15),
             email: (value) => {
-                if (value.length < 4) return getValidationMessage("min", 4);
-                if (value.length > 256) return getValidationMessage("max", 256);
+                const lengthError = lengthValidation(4, 256)(value);
+                if (lengthError) return lengthError;
+                return emailValidation(value);
             },
-            phoneNumber: (value) => {
-                if (value.length > 15) return getValidationMessage("max", 15);
-                if (value.length < 5) return getValidationMessage("min", 5);
-            },
+            phoneNumber: lengthValidation(5, 15),
             password: passwordValidation,
-            linkToPhoto: (value) => {
-                if (value.length > 250) return getValidationMessage("max", 250);
-                if (value.length < 5) return getValidationMessage("min", 5);
-            },
+            linkToPhoto: lengthValidation(5, 250),
         },
     };
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ValidationHelper } from "./ValidationHelper";
 
 const ALLOWED_LETTERS =
@@ -250,6 +250,26 @@ export const Form = ({
         showPassIcoHidden,
         ShowPassIcoVisible,
     } = LanguageSets.RegistrationElements()[selectedLang][0];
+
+    useEffect(() => {
+        const newErrors = {};
+        let hasChanged = false;
+
+        for (const name in formData) {
+            if (validation[name]) {
+                newErrors[name] = formData[name]
+                    ? validation[name](formData[name].trim())
+                    : "";
+                if (newErrors[name] !== errors[name]) {
+                    hasChanged = true;
+                }
+            }
+        }
+
+        if (hasChanged) {
+            setErrors(newErrors);
+        }
+    }, [selectedLang, formData, validation, errors]);
 
     return (
         <form className="Registration-form" onSubmit={handleSubmit}>

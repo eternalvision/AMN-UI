@@ -1,14 +1,14 @@
 .Settings {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     height: 100%;
     div {
         border-radius: var(--border-radius);
         padding: 15px;
         background-color: var(--background-color);
         box-shadow: var(--page-block-shadow);
+        margin: 10px;
     }
     h2 {
         color: var(--invert-color);
@@ -51,4 +51,5 @@
     box-shadow: var(--page-block-shadow);
     background-color: var(--bg-color);
     color: var(--invert-color);
+    cursor: pointer;
 }

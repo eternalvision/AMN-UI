@@ -95,15 +95,13 @@ const getAllUsers = async () => {
     }
 };
 
-const updateUserPassword = async (workerId, newPassword) => {
+const updateUserPassword = async (newPassword) => {
     try {
-        const response = await axios.patch(
-            `/profile/update/password${workerId}`,
-            {
-                password: newPassword,
-            }
-        );
+        const response = await axios.put(`/auth/profile/update/password`, {
+            password: newPassword,
+        });
         token.set();
+        token.unset();
         return response.data;
     } catch (error) {
         handleError(error);
@@ -156,6 +154,17 @@ const getWorkerData = async () => {
     }
 };
 
+const getUserByUsername = async (username) => {
+    try {
+        const response = await axios.get(`/auth/profiles/username/${username}`);
+        token.set();
+
+        return response.data;
+    } catch (error) {
+        handleError(error);
+    }
+};
+
 export const ApiRequests = {
     token,
     registerUser,
@@ -170,4 +179,5 @@ export const ApiRequests = {
     updateUserFinanceInfo,
     patchWorkerData,
     getWorkerData,
+    getUserByUsername,
 };

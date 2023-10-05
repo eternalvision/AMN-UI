@@ -5,7 +5,6 @@ export const InterfaceButtons = ({
     DarkMode,
     LocalizationComponent,
     LanguageSets,
-    Icon,
     useLanguage,
     GetLogo,
     userData,
@@ -41,6 +40,7 @@ export const InterfaceButtons = ({
                         isOpen={isOpen}
                         GetLogo={GetLogo}
                         logoutUser={logoutUser}
+                        userData={userData}
                     />
                 </section>
             </div>

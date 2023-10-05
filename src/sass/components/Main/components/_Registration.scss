@@ -45,7 +45,6 @@
     background-color: var(--bg-color);
     box-shadow: var(--page-block-shadow);
     border-radius: var(--border-radius);
-    padding: 10px;
     margin: 5px;
 }
 
@@ -55,21 +54,26 @@
         align-items: center;
         justify-content: space-between;
         li {
-            align-items: center;
-            display: flex;
-            margin-right: 15px;
-            color: var(--invert-color);
-            font-size: 20px;
-
-            img {
-                object-fit: cover;
-                border-radius: 50%;
-                margin-right: 15px;
+            width: 100%;
+            a {
+                background-color: var(--gray);
+                border-radius: var(--border-radius);
+                box-shadow: var(--page-block-shadow);
+                padding: 10px 20px 10px 10px;
+                align-items: center;
+                display: flex;
+                color: var(--invert-color);
+                font-size: 20px;
+                img {
+                    object-fit: cover;
+                    border-radius: 50%;
+                    margin-right: 15px;
+                }
             }
-
             &:last-child {
                 button {
-                    padding: 10px 11px;
+                    margin: 15px;
+                    padding: 10px;
                     display: flex;
                     justify-content: center;
                     align-content: center;
@@ -107,8 +111,9 @@
 }
 
 .UserSearch {
-    padding: 10px;
+    padding: 5px;
     padding-left: 20px;
+    font-size: 20px;
     margin: 0px 0px 20px 5px;
     border-radius: var(--border-radius);
     box-shadow: var(--page-block-shadow);

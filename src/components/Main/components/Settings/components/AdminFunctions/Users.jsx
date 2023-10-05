@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Users = ({
     deleteUser,
@@ -28,6 +29,7 @@ export const Users = ({
     const handleDeleteUser = async (workerId) => {
         try {
             await deleteUser(workerId);
+            window.location.reload();
             setUsers(users.filter((user) => user.workerId !== workerId));
         } catch (error) {
             console.error(error);
@@ -36,21 +38,23 @@ export const Users = ({
 
     const Values = LanguageSets.UsersElements()[selectedLang][0];
 
-    const { textTitle, deleteText, deleteIcon } = Values;
+    const { textTitle, deleteText, deleteIcon, searchText } = Values;
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value.toLowerCase());
     };
 
     if (users.data) {
-        let filteredUsers = users.data.filter((user) => {
-            return (
-                user.username.toLowerCase().includes(searchTerm) ||
-                user.profileType.toLowerCase().includes(searchTerm) ||
-                user.name.toLowerCase().includes(searchTerm) ||
-                user.surname.toLowerCase().includes(searchTerm)
-            );
-        });
+        let filteredUsers = users.data.filter(
+            ({ username, profileType, name, surname }) => {
+                return (
+                    username.toLowerCase().includes(searchTerm) ||
+                    profileType.toLowerCase().includes(searchTerm) ||
+                    name.toLowerCase().includes(searchTerm) ||
+                    surname.toLowerCase().includes(searchTerm)
+                );
+            }
+        );
         const sortedUsers = [...filteredUsers].sort((a, b) => {
             if (a.profileType === "admin" && b.profileType !== "admin") {
                 return -1;
@@ -66,7 +70,7 @@ export const Users = ({
                 <input
                     className="UserSearch"
                     type="text"
-                    placeholder="Search..."
+                    placeholder={searchText}
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
@@ -84,20 +88,22 @@ export const Users = ({
                                 <li key={workerId} className="User-list__items">
                                     <ul>
                                         <li>
-                                            <img
-                                                src={linkToPhoto}
-                                                alt={username}
-                                                width={50}
-                                                height={50}
-                                            />
-                                            {name} {surname}
-                                            <br />
-                                            {username}
-                                            <br />
-                                            {profileType}
+                                            <Link to={`/${username}`}>
+                                                <img
+                                                    src={linkToPhoto}
+                                                    alt={username}
+                                                    width={50}
+                                                    height={50}
+                                                />
+                                                {name} {surname}
+                                                <br />
+                                                {username}
+                                                <br />
+                                                {profileType}
+                                            </Link>
                                         </li>
                                         {username !== paramsUsername ? (
-                                            <li>
+                                            <li style={{ width: "auto" }}>
                                                 <button
                                                     onClick={() =>
                                                         handleDeleteUser(
