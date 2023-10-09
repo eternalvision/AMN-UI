@@ -69,7 +69,12 @@ export const RoutesComponent = ({
                 />
                 <Route
                     path={`/:username`}
-                    element={<Profile getUserByUsername={getUserByUsername} />}
+                    element={
+                        <Profile
+                            getUserByUsername={getUserByUsername}
+                            authUsername={username}
+                        />
+                    }
                 />
                 <Route
                     path={`/computational/:date/:category`}

@@ -680,7 +680,7 @@ export const Languages = {
                     textPassword: "Пароль",
                     textPhotoLink: "Посилання на фото",
                     textProfileType: "Тип профілю",
-                    textRegister: "Зареєструватися",
+                    textRegister: "Зареєструвати",
                     textUser: "Користувач",
                     textAdmin: "Адміністратор",
                     showPassIcoHidden: "Lock",
@@ -698,7 +698,7 @@ export const Languages = {
                     textPassword: "Пароль",
                     textPhotoLink: "Ссылка на фото",
                     textProfileType: "Тип профиля",
-                    textRegister: "Зарегистрироваться",
+                    textRegister: "Зарегистрировать",
                     textUser: "Пользователь",
                     textAdmin: "Администратор",
                     showPassIcoHidden: "Lock",
@@ -755,6 +755,8 @@ export const Languages = {
                     passValidate4: "Alespoň 2 speciální znaky!",
                     passValidate5: "Mezery v hesle nejsou povoleny!",
                     emailValidate1: "E-mail by měl obsahovat @!",
+                    passValidateRussian:
+                        "Ruská písmena v hesle nejsou povolena!",
                 },
             ],
             en: [
@@ -767,6 +769,8 @@ export const Languages = {
                     passValidate4: "At least 2 special characters required!",
                     passValidate5: "Spaces in the password are not allowed!",
                     emailValidate1: "Email should contain @!",
+                    passValidateRussian:
+                        "Russian letters in password are not allowed!",
                 },
             ],
             ua: [
@@ -779,6 +783,8 @@ export const Languages = {
                     passValidate4: "Потрібно мінімум 2 спеціальні символи!",
                     passValidate5: "Пробіли в паролі не дозволені!",
                     emailValidate1: "Email повинен містити @!",
+                    passValidateRussian:
+                        "Російські літери в паролі не дозволені!",
                 },
             ],
             ru: [
@@ -791,16 +797,16 @@ export const Languages = {
                     passValidate4: "Необходимо минимум 2 специальных символа!",
                     passValidate5: "Пробелы в пароле не допускаются!",
                     emailValidate1: "Email должен содержать @!",
+                    passValidateRussian: "Русские буквы в пароле запрещены!",
                 },
             ],
         };
     },
-
     PasswordValidate: () => {
         return {
             cz: [
                 {
-                    textPassword: "Heslo",
+                    textPassword: "Změnit heslo",
                     textPasswordEdit: "Změnit heslo",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
@@ -808,7 +814,7 @@ export const Languages = {
             ],
             en: [
                 {
-                    textPassword: "Password",
+                    textPassword: "Change password",
                     textPasswordEdit: "Change password",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
@@ -816,7 +822,7 @@ export const Languages = {
             ],
             ua: [
                 {
-                    textPassword: "Пароль",
+                    textPassword: "Змінити пароль",
                     textPasswordEdit: "Змінити пароль",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
@@ -824,7 +830,7 @@ export const Languages = {
             ],
             ru: [
                 {
-                    textPassword: "Пароль",
+                    textPassword: "Изменить пароль",
                     textPasswordEdit: "Изменить пароль",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",

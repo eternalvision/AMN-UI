@@ -9,6 +9,10 @@ export const ValidationHelper = (LanguageSets, selectedLang) => {
         let digitCount = 0;
         let specialCharCount = 0;
 
+        const hasRussianLetters = /[а-яА-ЯёЁ]/.test(value);
+        if (hasRussianLetters)
+            return getValidationMessage("passValidateRussian");
+
         for (let char of value) {
             if (char >= "A" && char <= "Z") upperCaseCount++;
             else if (char >= "a" && char <= "z") lowerCaseCount++;

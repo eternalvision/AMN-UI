@@ -19,7 +19,7 @@ export const Registration = ({
         password: "",
         linkToPhoto:
             "https://i.ibb.co/bRLH3S4/istockphoto-1276619045-612x612.jpg",
-        profileType: "user",
+        profileType: "",
     };
 
     const handleSubmit = async (formData) => {
@@ -27,6 +27,7 @@ export const Registration = ({
             Object.entries(formData).filter(([_, value]) => value !== "")
         );
 
+        console.log(filteredFormData);
         try {
             const response = await registerUser(filteredFormData);
             if (response && response.data && response.data.token) {

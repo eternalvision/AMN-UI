@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const Profile = ({ getUserByUsername }) => {
+export const Profile = ({ getUserByUsername, authUsername }) => {
     const { username } = useParams();
     const [userData, setUserData] = useState({});
 
@@ -54,6 +54,7 @@ export const Profile = ({ getUserByUsername }) => {
                     </li>
                 </ul>
             </div>
+            {authUsername !== username ? <div>ewewe</div> : ""}
         </section>
     );
 };

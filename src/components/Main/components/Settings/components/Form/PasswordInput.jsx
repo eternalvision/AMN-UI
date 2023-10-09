@@ -13,6 +13,7 @@ const PasswordInput = ({
     hiddenIco,
     visibleIco,
     GetLogo,
+    validate,
 }) => {
     return (
         <li className="Registration-Password-Item">
