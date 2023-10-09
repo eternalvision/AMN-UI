@@ -54,7 +54,7 @@ export const Profile = ({ getUserByUsername, authUsername }) => {
                     </li>
                 </ul>
             </div>
-            {authUsername !== username ? <div>ewewe</div> : ""}
+            {/* {authUsername !== username ? <div>ewewe</div> : ""} */}
         </section>
     );
 };
