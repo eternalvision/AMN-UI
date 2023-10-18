@@ -27,7 +27,6 @@ export const Registration = ({
             Object.entries(formData).filter(([_, value]) => value !== "")
         );
 
-        console.log(filteredFormData);
         try {
             const response = await registerUser(filteredFormData);
             if (response && response.data && response.data.token) {

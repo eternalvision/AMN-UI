@@ -32,18 +32,11 @@ export const EmployeeInterfaceBtn = ({
     }, [parsedMonth, setMonth, setCurrentYear, currentYear, totalPages]);
 
     const handleBackwardClick = useCallback(() => {
-        console.log("Текущий месяц:", parsedMonth, "Текущий год:", currentYear);
         if (parsedMonth > 1) {
             setMonth((prevMonth) => `0${Number(prevMonth) - 1}`.slice(-2));
-
-            console.log(
-                "Месяц должен быть обновлен на:",
-                `0${parsedMonth - 1}`.slice(-2)
-            );
         } else {
             if (currentYear > 1) {
                 setCurrentYear(currentYear - 1);
-                console.log(`Год обновлен на: ${currentYear - 1}`);
                 setMonth("12");
             }
         }

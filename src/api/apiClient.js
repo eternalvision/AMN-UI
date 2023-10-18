@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-axios.defaults.baseURL = "https://amn-backend.alpryadchenko.repl.co/api";
+axios.defaults.baseURL = "http://localhost:1594/api";
 
 const token = {
     set() {
