@@ -13,6 +13,7 @@ export const RoutesComponent = ({
     userData,
     Login,
     ApiRequests,
+    showUniqueToast,
 }) => {
     const { Computational, Documentation, Employees, Profile, Settings } =
         MainComponents;
@@ -28,7 +29,7 @@ export const RoutesComponent = ({
     } = ApiRequests;
 
     const { username, profileType, workerId } = userData;
-    if (userData) {
+    if (userData.token.length > 0) {
         return (
             <Routes>
                 <Route
@@ -45,10 +46,10 @@ export const RoutesComponent = ({
                             NumberFormatter={NumberFormatter}
                             Loader={Loader}
                             userData={userData}
+                            showUniqueToast={showUniqueToast}
                         />
                     }
                 />
-                <Route path="/logout" element={<Navigate to={`/login`} />} />
                 <Route
                     path="/:username/settings"
                     element={
@@ -64,20 +65,22 @@ export const RoutesComponent = ({
                             updateUserPassword={updateUserPassword}
                             username={username}
                             workerId={workerId}
+                            showUniqueToast={showUniqueToast}
                         />
                     }
                 />
                 <Route
-                    path={`/:username`}
+                    path="/:username"
                     element={
                         <Profile
                             getUserByUsername={getUserByUsername}
                             authUsername={username}
+                            showUniqueToast={showUniqueToast}
                         />
                     }
                 />
                 <Route
-                    path={`/computational/:date/:category`}
+                    path="/computational/:date/:category"
                     element={
                         <Computational
                             GetLogo={GetLogo}
@@ -102,14 +105,18 @@ export const RoutesComponent = ({
                         />
                     }
                 />
+
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         );
     } else {
         return (
             <Routes>
+                <Route
+                    path="/login"
+                    element={<Login showUniqueToast={showUniqueToast} />}
+                />
                 <Route path="*" element={<Navigate to="/login" />} />
-                <Route path="/login" element={<Login />} />
             </Routes>
         );
     }

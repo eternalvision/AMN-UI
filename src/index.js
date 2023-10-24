@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
+import { ToastContainer } from "react-toastify";
 
 import { Context } from "./context/Context";
 import { Assets } from "./assets/Assets";
@@ -13,6 +14,7 @@ import { AuthorizationComponents } from "./authorization/Components";
 
 import "normalize.css";
 import "tabulator-tables/dist/css/tabulator.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./css/index.min.css";
 
 const {
@@ -27,8 +29,8 @@ const {
     useFetchData,
     useCurrentDate,
     useLocalStorageState,
-    useCookieStorageState,
     useDisableEvents,
+    useUniqueToast,
 } = Hooks;
 const { Icon } = Assets;
 const {
@@ -59,7 +61,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     Icon={Icon}
                     useDisableEvents={useDisableEvents}
                     useLocalStorageState={useLocalStorageState}
-                    useCookieStorageState={useCookieStorageState}
                     NumberFormatter={NumberFormatter}
                     GetLogo={GetLogo}
                     Alert={Alert}
@@ -72,7 +73,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     LanguageProvider={LanguageProvider}
                     UserDataProvider={UserDataProvider}
                     useUserData={useUserData}
+                    useUniqueToast={useUniqueToast}
                 />
+                <ToastContainer />
             </DarkModeProvider>
         </BrowserRouter>
     </React.StrictMode>

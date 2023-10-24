@@ -3,29 +3,30 @@ export const ValidationHelper = (LanguageSets, selectedLang) => {
         return LanguageSets.ValidationElements({ num })[selectedLang][0][type];
     };
 
-    const passwordValidation = (value) => {
-        let upperCaseCount = 0;
-        let lowerCaseCount = 0;
-        let digitCount = 0;
-        let specialCharCount = 0;
+    //! Password Validation
+    // const passwordValidation = (value) => {
+    //     let upperCaseCount = 0;
+    //     let lowerCaseCount = 0;
+    //     let digitCount = 0;
+    //     let specialCharCount = 0;
 
-        const hasRussianLetters = /[а-яА-ЯёЁ]/.test(value);
-        if (hasRussianLetters)
-            return getValidationMessage("passValidateRussian");
+    //     const hasRussianLetters = /[а-яА-ЯёЁ]/.test(value);
+    //     if (hasRussianLetters)
+    //         return getValidationMessage("passValidateRussian");
 
-        for (let char of value) {
-            if (char >= "A" && char <= "Z") upperCaseCount++;
-            else if (char >= "a" && char <= "z") lowerCaseCount++;
-            else if (char >= "0" && char <= "9") digitCount++;
-            else if (char.trim()) specialCharCount++;
-        }
+    //     for (let char of value) {
+    //         if (char >= "A" && char <= "Z") upperCaseCount++;
+    //         else if (char >= "a" && char <= "z") lowerCaseCount++;
+    //         else if (char >= "0" && char <= "9") digitCount++;
+    //         else if (char.trim()) specialCharCount++;
+    //     }
 
-        if (upperCaseCount < 2) return getValidationMessage("passValidate1");
-        if (lowerCaseCount < 2) return getValidationMessage("passValidate2");
-        if (digitCount < 2) return getValidationMessage("passValidate3");
-        if (specialCharCount < 2) return getValidationMessage("passValidate4");
-        if (value.includes(" ")) return getValidationMessage("passValidate5");
-    };
+    //     if (upperCaseCount < 2) return getValidationMessage("passValidate1");
+    //     if (lowerCaseCount < 2) return getValidationMessage("passValidate2");
+    //     if (digitCount < 2) return getValidationMessage("passValidate3");
+    //     if (specialCharCount < 2) return getValidationMessage("passValidate4");
+    //     if (value.includes(" ")) return getValidationMessage("passValidate5");
+    // };
 
     const lengthValidation = (min, max, type) => (value) => {
         if (value.length < min) return getValidationMessage("min", min);
@@ -49,7 +50,8 @@ export const ValidationHelper = (LanguageSets, selectedLang) => {
                 return emailValidation(value);
             },
             phoneNumber: lengthValidation(5, 15),
-            password: passwordValidation,
+            // password: passwordValidation,
+            password: lengthValidation(8, 30),
             linkToPhoto: lengthValidation(5, 250),
         },
     };

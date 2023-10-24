@@ -1,12 +1,12 @@
 import { useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useUniqueToast } from "../../hooks/useUniqueToast";
 
 export const Login = ({ loginUser, onLoginSuccess }) => {
-    const navigate = useNavigate();
+    const showUniqueToast = useUniqueToast();
 
     const [formData, setFormData] = useState({
-        username: {
+        email: {
             value: "",
         },
         password: {
@@ -26,7 +26,7 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
 
     const clearInput = () => {
         setFormData({
-            username: { value: "" },
+            email: { value: "" },
             password: { value: "" },
         });
     };
@@ -35,7 +35,7 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
         event.preventDefault();
         try {
             const response = await loginUser({
-                username: formData.username.value,
+                email: formData.email.value,
                 password: formData.password.value,
             });
 
@@ -43,13 +43,13 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
                 Cookies.set("userToken", response.data.token, {
                     expires: response.data.expiresToken / (60 * 60 * 24),
                 });
-                navigate("/");
+                const { message, status } = response;
+                showUniqueToast(`${status} - ${message}`);
+                clearInput();
+                onLoginSuccess();
             }
-
-            clearInput();
-            onLoginSuccess();
         } catch (error) {
-            console.error(error);
+            showUniqueToast("Chyba v přihlášení nebo hesle!", false);
         }
     };
 
@@ -75,9 +75,7 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
                 autoComplete="on"
                 className="Login-form">
                 <ul>
-                    <li>
-                        {renderField("username", "text", "Uživatelské jméno")}
-                    </li>
+                    <li>{renderField("email", "text", "Emeil")}</li>
                     <li>
                         <ul>
                             <li>

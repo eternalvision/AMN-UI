@@ -3,6 +3,7 @@ import { useCurrentDate } from "./useCurrentDate";
 import { useLocalStorageState } from "./useLocalStorageState";
 import { useCookieStorageState } from "./useCookieStorageState";
 import useDisableEvents from "./useDisableEvents";
+import { useUniqueToast } from "./useUniqueToast";
 
 export const Hooks = {
     useFetchData,
@@ -10,4 +11,5 @@ export const Hooks = {
     useLocalStorageState,
     useCookieStorageState,
     useDisableEvents,
+    useUniqueToast,
 };

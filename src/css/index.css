@@ -253,11 +253,11 @@ body::-webkit-scrollbar-button:vertical:end:increment {
   --black-color: #222222;
   --blured: blur(10px);
   --blured-invert: blur(0px);
-  --border-radius: 8px;
+  --border-radius: 12px;
   --height40: 40px;
   --layout-invert: invert(100%);
   --layout-reinvert: invert(0);
-  --dropdown-background-light: #65646400;
+  --dropdown-background-light: #9b9b9bb6;
   --dropdown-background-light-hover: #d3d3d399;
   --dropdown-background-dark: #7c7c7c99;
   --dropdown-background-dark-hover: #222222;
@@ -1311,19 +1311,38 @@ thead tr td span {
   background-color: var(--background-color);
   -webkit-box-shadow: var(--page-block-shadow);
           box-shadow: var(--page-block-shadow);
+  position: relative;
 }
-.Profile div ul:first-of-type {
-  margin-bottom: 30px;
+.Profile div ul:first-of-type li:first-child {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 .Profile div ul:first-of-type li:first-child img {
+  margin-bottom: 20px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: var(--border-radius);
 }
+.Profile div ul:last-of-type {
+  top: -6px;
+  left: -5px;
+  right: -5px;
+  margin: 20px;
+  border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+  padding: 10px;
+  background-color: var(--dropdown-invert);
+  -webkit-backdrop-filter: var(--blured);
+          backdrop-filter: var(--blured);
+  position: absolute;
+}
 
 .Name,
 .Username {
-  color: var(--invert-color);
+  color: var(--body-bg-color-dark);
 }
 
 .Name {

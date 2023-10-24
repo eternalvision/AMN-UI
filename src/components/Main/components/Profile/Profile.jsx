@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const Profile = ({ getUserByUsername, authUsername }) => {
+export const Profile = ({ getUserByUsername, showUniqueToast }) => {
     const { username } = useParams();
     const [userData, setUserData] = useState({});
 
@@ -11,6 +11,7 @@ export const Profile = ({ getUserByUsername, authUsername }) => {
         const fetchData = async () => {
             try {
                 const data = await getUserByUsername(username);
+                showUniqueToast(data.status);
                 setUserData(data.data);
             } catch (error) {
                 console.error(error);
@@ -18,7 +19,7 @@ export const Profile = ({ getUserByUsername, authUsername }) => {
         };
 
         fetchData();
-    }, [username, getUserByUsername]);
+    }, [username, getUserByUsername, showUniqueToast]);
 
     return (
         <section className="Profile">
@@ -26,8 +27,8 @@ export const Profile = ({ getUserByUsername, authUsername }) => {
                 <ul>
                     <li>
                         <img
-                            width={400}
-                            height={400}
+                            width={350}
+                            height={350}
                             src={linkToPhoto}
                             alt={`${name} ${surname}`}
                         />

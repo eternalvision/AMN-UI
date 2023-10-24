@@ -16,6 +16,7 @@ export const Main = ({
     ApiRequests,
     userData,
     Login,
+    showUniqueToast,
 }) => {
     const { selectedLang } = useLanguage();
 
@@ -44,6 +45,7 @@ export const Main = ({
                         useLocalStorageState={useLocalStorageState}
                         Login={Login}
                         ApiRequests={ApiRequests}
+                        showUniqueToast={showUniqueToast}
                     />
                 </section>
             </main>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Components } from "./components/Components";
 import { RoutesComponent } from "./routes/RoutesComponent";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 const { Header, Main } = Components;
 
@@ -24,9 +25,11 @@ export const App = ({
     ApiRequests,
     Login,
     LanguageProvider,
-
+    useUniqueToast,
     useUserData,
 }) => {
+    const navigate = useNavigate();
+    const showUniqueToast = useUniqueToast();
     useDisableEvents();
     const { loginUser, logoutUser, getCurrentUser, updateUserFinanceInfo } =
         ApiRequests;
@@ -54,7 +57,7 @@ export const App = ({
     if (!token) {
         return (
             <Login
-                onLoginSuccess={() => window.location.reload()}
+                onLoginSuccess={() => navigate("/")}
                 loginUser={loginUser}
                 useCookieStorageState={useCookieStorageState}
             />
@@ -92,6 +95,7 @@ export const App = ({
                                 ApiRequests={ApiRequests}
                                 userData={userData}
                                 Login={Login}
+                                showUniqueToast={showUniqueToast}
                             />
                         </>
                     )}

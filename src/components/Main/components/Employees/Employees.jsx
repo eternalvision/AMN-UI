@@ -13,6 +13,7 @@ export const Employees = ({
     NumberFormatter,
     Loader,
     userData,
+    showUniqueToast,
 }) => {
     const Values = LanguageSets.CardInterfaceElements()[selectedLang];
     const navigate = useNavigate();

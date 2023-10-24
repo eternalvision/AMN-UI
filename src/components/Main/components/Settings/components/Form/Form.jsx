@@ -116,6 +116,7 @@ const PasswordInput = ({
     hiddenIco,
     visibleIco,
     GetLogo,
+    showUniqueToast,
 }) => {
     return (
         <li className="Registration-Password-Item">
@@ -169,6 +170,7 @@ export const Form = ({
     allFieldsRequired,
     minFieldsRequired,
     GetLogo,
+    showUniqueToast,
 }) => {
     const [formData, setFormData] = useState(initialState);
     const [visiblePassword, setVisiblePassword] = useState(false);

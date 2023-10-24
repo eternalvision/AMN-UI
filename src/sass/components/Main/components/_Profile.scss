@@ -10,18 +10,31 @@
         padding: 15px;
         background-color: var(--background-color);
         box-shadow: var(--page-block-shadow);
-
+        position: relative;
         ul {
             &:first-of-type {
-                margin-bottom: 30px;
                 li {
                     &:first-child {
+                        justify-content: center;
+                        display: flex;
                         img {
+                            margin-bottom: 20px;
                             object-fit: cover;
                             border-radius: var(--border-radius);
                         }
                     }
                 }
+            }
+            &:last-of-type {
+                top: -6px;
+                left: -5px;
+                right: -5px;
+                margin: 20px;
+                border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+                padding: 10px;
+                background-color: var(--dropdown-invert);
+                backdrop-filter: var(--blured);
+                position: absolute;
             }
         }
     }
@@ -29,7 +42,7 @@
 
 .Name,
 .Username {
-    color: var(--invert-color);
+    color: var(--body-bg-color-dark);
 }
 
 .Name {

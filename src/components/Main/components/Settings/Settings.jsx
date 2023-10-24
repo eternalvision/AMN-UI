@@ -14,6 +14,7 @@ export const Settings = ({
     GetLogo,
     username,
     workerId,
+    showUniqueToast,
 }) => {
     const { textSave, textTitle } =
         LanguageSets.SettingsElements()[selectedLang][0];
@@ -34,11 +35,13 @@ export const Settings = ({
 
         try {
             const result = await updateUserFinanceInfo(formData);
+            const { message, status } = result;
+            showUniqueToast(`${status} - ${message}`);
             if (result) {
                 window.location.reload();
             }
         } catch (error) {
-            console.error(error);
+            showUniqueToast(error.message, false);
         }
     };
 
@@ -79,6 +82,7 @@ export const Settings = ({
                     GetLogo={GetLogo}
                     Form={Form}
                     username={username}
+                    showUniqueToast={showUniqueToast}
                 />
             )}
         </section>

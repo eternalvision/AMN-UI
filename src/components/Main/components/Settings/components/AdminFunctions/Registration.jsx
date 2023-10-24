@@ -9,6 +9,7 @@ export const Registration = ({
     GetLogo,
     username,
     Form,
+    showUniqueToast,
 }) => {
     const initialState = {
         name: "",
@@ -19,7 +20,7 @@ export const Registration = ({
         password: "",
         linkToPhoto:
             "https://i.ibb.co/bRLH3S4/istockphoto-1276619045-612x612.jpg",
-        profileType: "",
+        profileType: "user",
     };
 
     const handleSubmit = async (formData) => {
@@ -29,11 +30,16 @@ export const Registration = ({
 
         try {
             const response = await registerUser(filteredFormData);
+
+            const { message, status } = response;
+            showUniqueToast(`${status} - ${message}`);
+
             if (response && response.data && response.data.token) {
                 window.location.reload();
             }
         } catch (error) {
             console.error(error);
+            showUniqueToast(error.message, false);
         }
     };
 
@@ -65,6 +71,7 @@ export const Registration = ({
                 selectedLang={selectedLang}
                 GetLogo={GetLogo}
                 username={username}
+                showUniqueToast={showUniqueToast}
             />
         </>
     );

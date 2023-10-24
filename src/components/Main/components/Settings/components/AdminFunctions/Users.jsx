@@ -8,6 +8,7 @@ export const Users = ({
     selectedLang,
     GetLogo,
     username,
+    showUniqueToast,
 }) => {
     const [users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +25,7 @@ export const Users = ({
         };
 
         fetchUsers();
-    }, [getAllUsers]);
+    }, [getAllUsers, showUniqueToast]);
 
     const handleDeleteUser = async (workerId) => {
         try {
