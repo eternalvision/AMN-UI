@@ -18,6 +18,18 @@ editor-squiggler {
   display: none !important;
 }
 
+.Toastify__toast-container--bottom-left {
+  bottom: 0;
+}
+
+.Toastify__toast-container--bottom-center {
+  bottom: 0;
+}
+
+.Toastify__close-button > svg {
+  fill: var(--body-bg-color);
+}
+
 html,
 body {
   height: 100%;
@@ -760,10 +772,10 @@ form {
           align-items: center;
 }
 .Employee-category span:first-child {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .Employee-category span:last-child {
-  padding: 5px;
+  padding: 5px 15px;
   background-color: var(--search-bg-color);
   color: var(--layout-color);
   border-radius: var(--border-radius);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export const Profile = ({ getUserByUsername, showUniqueToast }) => {
+export const Profile = ({ getUserByUsername }) => {
     const { username } = useParams();
     const [userData, setUserData] = useState({});
 
@@ -11,7 +11,6 @@ export const Profile = ({ getUserByUsername, showUniqueToast }) => {
         const fetchData = async () => {
             try {
                 const data = await getUserByUsername(username);
-                showUniqueToast(data.status);
                 setUserData(data.data);
             } catch (error) {
                 console.error(error);
@@ -19,7 +18,7 @@ export const Profile = ({ getUserByUsername, showUniqueToast }) => {
         };
 
         fetchData();
-    }, [username, getUserByUsername, showUniqueToast]);
+    }, [username, getUserByUsername]);
 
     return (
         <section className="Profile">

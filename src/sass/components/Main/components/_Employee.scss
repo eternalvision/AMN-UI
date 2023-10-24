@@ -154,10 +154,10 @@
 
     span {
         &:first-child {
-            margin-right: 5px;
+            margin-right: 10px;
         }
         &:last-child {
-            padding: 5px;
+            padding: 5px 15px;
             background-color: var(--search-bg-color);
             color: var(--layout-color);
             border-radius: var(--border-radius);
@@ -214,7 +214,6 @@
     margin: 5px;
     position: relative;
     left: 0;
- 
 }
 
 .Employee-CardItems {

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import shortUUID from "short-uuid";
 import { EmployeeComponents } from "./components/EmployeeComponents";
@@ -18,6 +19,7 @@ export const Employees = ({
     const Values = LanguageSets.CardInterfaceElements()[selectedLang];
     const navigate = useNavigate();
     const { currentYear, setCurrentYear, month, setMonth } = useCurrentDate();
+    const [lastSuccessfulTerm, setLastSuccessfulTerm] = useState(null);
 
     const { items, nextMonthDataExists, prevMonthDataExists } = useFetchData({
         currentYear,
@@ -25,12 +27,38 @@ export const Employees = ({
         asmisToken: userData.asmisToken,
     });
 
-    const { text, calculationText } = Values[0];
+    const { text, calculationText, dataAlert, dataNullAlert } = Values[0];
     const data = items ? FilteredData({ items }) : null;
     const termin = data?.Termin;
 
     const dateY = termin ? termin.slice(0, 4) : null;
     const dateM = termin ? termin.slice(4, 6) : null;
+
+    useEffect(() => {
+        if (items && items.units.length > 0) {
+            showUniqueToast(`${dataAlert}: ${dateY}.${dateM}`);
+            setLastSuccessfulTerm(termin);
+        } else if (lastSuccessfulTerm) {
+            showUniqueToast(dataNullAlert, false);
+
+            const lastSuccessfulYear = lastSuccessfulTerm.slice(0, 4);
+            const lastSuccessfulMonth = lastSuccessfulTerm.slice(4, 6);
+
+            setCurrentYear(lastSuccessfulYear);
+            setMonth(lastSuccessfulMonth);
+        }
+    }, [
+        items,
+        termin,
+        lastSuccessfulTerm,
+        setCurrentYear,
+        setMonth,
+        dateY,
+        dateM,
+        showUniqueToast,
+        dataAlert,
+        dataNullAlert,
+    ]);
 
     return (
         <section>

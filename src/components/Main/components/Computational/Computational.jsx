@@ -9,6 +9,7 @@ export const Computational = ({
     Loader,
     patchWorkerData,
     getWorkerData,
+    showUniqueToast,
 }) => {
     const location = useLocation();
 
@@ -26,10 +27,11 @@ export const Computational = ({
                     Loader={Loader}
                     patchWorkerData={patchWorkerData}
                     getWorkerData={getWorkerData}
+                    showUniqueToast={showUniqueToast}
                 />
             );
         }
     }
 
-    return <Navigate to={`/workspace`} />;
+    return <Navigate to={`/`} />;
 };

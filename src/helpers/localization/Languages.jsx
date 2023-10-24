@@ -166,6 +166,9 @@ export const Languages = {
                     timeImage: "Time",
                     dollarImage: "MoneyDollarCircle",
                     searchImage: "Search2",
+                    dataAlert: "Data úspěšně dorazila",
+                    dataNullAlert:
+                        "Pro toto období nejsou k dispozici žádná data!",
                 },
             ],
             en: [
@@ -181,6 +184,8 @@ export const Languages = {
                     timeImage: "Time",
                     dollarImage: "MoneyDollarCircle",
                     searchImage: "Search2",
+                    dataAlert: "Data has successfully arrived",
+                    dataNullAlert: "No data is available for this period!",
                 },
             ],
             ua: [
@@ -196,6 +201,8 @@ export const Languages = {
                     timeImage: "Time",
                     dollarImage: "MoneyDollarCircle",
                     searchImage: "Search2",
+                    dataAlert: "Дані успішно прибули",
+                    dataNullAlert: "На цей період дані відсутні!",
                 },
             ],
             ru: [
@@ -211,6 +218,8 @@ export const Languages = {
                     timeImage: "Time",
                     dollarImage: "MoneyDollarCircle",
                     searchImage: "Search2",
+                    dataAlert: "Данные успешно пришли",
+                    dataNullAlert: "На этот период данных нет!",
                 },
             ],
         };
@@ -588,6 +597,8 @@ export const Languages = {
                     textPhotoLink: "Odkaz na fotografii",
                     textSave: "Uložit",
                     textPassword: "Heslo",
+                    settingsAlert: "Data byla úspěšně aktualizována",
+                    settingsAlertBad: "Při aktualizaci dat došlo k chybě",
                 },
             ],
             en: [
@@ -601,6 +612,9 @@ export const Languages = {
                     textPhotoLink: "Photo link",
                     textSave: "Save",
                     textPassword: "Password",
+                    settingsAlert: "Data has been successfully updated",
+                    settingsAlertBad:
+                        "An error occurred while updating the data",
                 },
             ],
             ua: [
@@ -614,6 +628,8 @@ export const Languages = {
                     textPhotoLink: "Посилання на фото",
                     textSave: "Зберегти",
                     textPassword: "Пароль",
+                    settingsAlert: "Дані успішно оновлено",
+                    settingsAlertBad: "Під час оновлення даних сталася помилка",
                 },
             ],
             ru: [
@@ -627,6 +643,8 @@ export const Languages = {
                     textPhotoLink: "Ссылка на фото",
                     textSave: "Сохранить",
                     textPassword: "Пароль",
+                    settingsAlert: "Данные успешно обновлены",
+                    settingsAlertBad: "При обновлении данных произошла ошибка",
                 },
             ],
         };
@@ -649,6 +667,8 @@ export const Languages = {
                     textAdmin: "Správce",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    RegistrationSuccessful: "Registrace úspěšně dokončena",
+                    RegistrationError: "Při registraci došlo k chybě",
                 },
             ],
             en: [
@@ -667,6 +687,9 @@ export const Languages = {
                     textAdmin: "Administrator",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    RegistrationSuccessful:
+                        "Registration successfully completed",
+                    RegistrationError: "An error occurred during registration",
                 },
             ],
             ua: [
@@ -685,6 +708,8 @@ export const Languages = {
                     textAdmin: "Адміністратор",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    RegistrationSuccessful: "Реєстрація успішно завершена",
+                    RegistrationError: "Під час реєстрації сталася помилка",
                 },
             ],
             ru: [
@@ -703,6 +728,8 @@ export const Languages = {
                     textAdmin: "Администратор",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    RegistrationSuccessful: "Регистрация успешно завершена",
+                    RegistrationError: "Во время регистрации произошла ошибка",
                 },
             ],
         };
@@ -715,6 +742,11 @@ export const Languages = {
                     deleteText: "Smazat uživatele",
                     deleteIcon: "DeleteBin7",
                     searchText: "Vyhledávání",
+                    usersAlert: "Seznam uživatelů byl úspěšně načten!",
+                    usersAlertBad:
+                        "Při zobrazování seznamu uživatelů došlo k chybě",
+                    usersDeleteAlert: "Uživatel byl smazán",
+                    usersDeleteBadAlert: "Při mazání uživatele došlo k chybě",
                 },
             ],
             en: [
@@ -723,6 +755,12 @@ export const Languages = {
                     deleteText: "Delete user",
                     deleteIcon: "DeleteBin7",
                     searchText: "Search",
+                    usersAlert: "User list successfully loaded!",
+                    usersAlertBad:
+                        "An error occurred while displaying the user list",
+                    usersDeleteAlert: "User has been deleted",
+                    usersDeleteBadAlert:
+                        "An error occurred while deleting the user",
                 },
             ],
             ua: [
@@ -731,6 +769,12 @@ export const Languages = {
                     deleteText: "Видалити користувача",
                     deleteIcon: "DeleteBin7",
                     searchText: "Пошук",
+                    usersAlert: "Список користувачів успішно завантажений!",
+                    usersAlertBad:
+                        "При відображенні списку користувачів сталася помилка",
+                    usersDeleteAlert: "Користувача видалено",
+                    usersDeleteBadAlert:
+                        "При видаленні користувача сталася помилка",
                 },
             ],
             ru: [
@@ -739,6 +783,12 @@ export const Languages = {
                     deleteText: "Удалить пользователя",
                     deleteIcon: "DeleteBin7",
                     searchText: "Поиск",
+                    usersAlert: "Список пользователей успешно загружен!",
+                    usersAlertBad:
+                        "При отображении списка пользователей произошла ошибка",
+                    usersDeleteAlert: "Пользователь удален",
+                    usersDeleteBadAlert:
+                        "При удалении пользователя произошла ошибка",
                 },
             ],
         };
@@ -810,6 +860,9 @@ export const Languages = {
                     textPasswordEdit: "Změnit heslo",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    passAlertOk:
+                        "Heslo bylo úspěšně aktualizováno, přihlaste se znovu",
+                    passAlertBad: "Při aktualizaci vašeho hesla došlo k chybě",
                 },
             ],
             en: [
@@ -818,6 +871,10 @@ export const Languages = {
                     textPasswordEdit: "Change password",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    passAlertOk:
+                        "Password has been successfully updated, please log in again",
+                    passAlertBad:
+                        "An error occurred while updating your password",
                 },
             ],
             ua: [
@@ -826,6 +883,10 @@ export const Languages = {
                     textPasswordEdit: "Змінити пароль",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    passAlertOk:
+                        "Пароль успішно оновлено, будь ласка, увійдіть знову",
+                    passAlertBad:
+                        "Під час оновлення вашого паролю сталася помилка",
                 },
             ],
             ru: [
@@ -834,6 +895,10 @@ export const Languages = {
                     textPasswordEdit: "Изменить пароль",
                     showPassIcoHidden: "Lock",
                     ShowPassIcoVisible: "LockUnlock",
+                    passAlertOk:
+                        "Пароль успешно обновлен, пожалуйста, войдите заново",
+                    passAlertBad:
+                        "При обновлении вашего пароля произошла ошибка",
                 },
             ],
         };

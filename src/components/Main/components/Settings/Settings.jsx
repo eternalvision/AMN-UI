@@ -16,7 +16,7 @@ export const Settings = ({
     workerId,
     showUniqueToast,
 }) => {
-    const { textSave, textTitle } =
+    const { textSave, textTitle, settingsAlert, settingsAlertBad } =
         LanguageSets.SettingsElements()[selectedLang][0];
 
     const initialState = {
@@ -35,13 +35,13 @@ export const Settings = ({
 
         try {
             const result = await updateUserFinanceInfo(formData);
-            const { message, status } = result;
-            showUniqueToast(`${status} - ${message}`);
+
             if (result) {
+                showUniqueToast(settingsAlert);
                 window.location.reload();
             }
         } catch (error) {
-            showUniqueToast(error.message, false);
+            showUniqueToast(settingsAlertBad, false);
         }
     };
 
@@ -68,6 +68,7 @@ export const Settings = ({
                         updateUserPassword={updateUserPassword}
                         workerId={workerId}
                         GetLogo={GetLogo}
+                        showUniqueToast={showUniqueToast}
                     />
                 </div>
             </section>

@@ -20,8 +20,17 @@ export const Registration = ({
         password: "",
         linkToPhoto:
             "https://i.ibb.co/bRLH3S4/istockphoto-1276619045-612x612.jpg",
-        profileType: "user",
+        profileType: "",
     };
+
+    const Values = LanguageSets.RegistrationElements()[selectedLang][0];
+
+    const {
+        textRegister,
+        textTitle,
+        RegistrationSuccessful,
+        RegistrationError,
+    } = Values;
 
     const handleSubmit = async (formData) => {
         const filteredFormData = Object.fromEntries(
@@ -31,21 +40,15 @@ export const Registration = ({
         try {
             const response = await registerUser(filteredFormData);
 
-            const { message, status } = response;
-            showUniqueToast(`${status} - ${message}`);
-
             if (response && response.data && response.data.token) {
+                showUniqueToast(RegistrationSuccessful);
                 window.location.reload();
             }
         } catch (error) {
             console.error(error);
-            showUniqueToast(error.message, false);
+            showUniqueToast(RegistrationError, false);
         }
     };
-
-    const Values = LanguageSets.RegistrationElements()[selectedLang][0];
-
-    const { textRegister, textTitle } = Values;
 
     return (
         <>

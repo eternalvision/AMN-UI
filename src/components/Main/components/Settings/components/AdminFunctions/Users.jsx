@@ -14,32 +14,45 @@ export const Users = ({
     const [searchTerm, setSearchTerm] = useState("");
     let paramsUsername = username;
 
+    const Values = LanguageSets.UsersElements()[selectedLang][0];
+
+    const {
+        textTitle,
+        deleteText,
+        deleteIcon,
+        searchText,
+        usersAlert,
+        usersAlertBad,
+        usersDeleteAlert,
+        usersDeleteBadAlert,
+    } = Values;
+
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const allUsers = await getAllUsers();
+                showUniqueToast(usersAlert);
                 setUsers(allUsers);
             } catch (error) {
                 console.error(error);
+                showUniqueToast(usersAlertBad, false);
             }
         };
 
         fetchUsers();
-    }, [getAllUsers, showUniqueToast]);
+    }, [getAllUsers, showUniqueToast, usersAlert, usersAlertBad]);
 
     const handleDeleteUser = async (workerId) => {
         try {
             await deleteUser(workerId);
+            showUniqueToast(usersDeleteAlert);
             window.location.reload();
             setUsers(users.filter((user) => user.workerId !== workerId));
         } catch (error) {
             console.error(error);
+            showUniqueToast(usersDeleteBadAlert, false);
         }
     };
-
-    const Values = LanguageSets.UsersElements()[selectedLang][0];
-
-    const { textTitle, deleteText, deleteIcon, searchText } = Values;
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value.toLowerCase());

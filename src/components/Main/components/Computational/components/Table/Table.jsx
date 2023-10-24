@@ -9,6 +9,7 @@ export const Table = ({
     Loader,
     patchWorkerData,
     getWorkerData,
+    showUniqueToast,
 }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [databaseRecords, setDatabaseRecords] = useState([]);
@@ -24,7 +25,7 @@ export const Table = ({
         };
 
         fetchData();
-    }, [getWorkerData]);
+    }, [getWorkerData, isLoaded, showUniqueToast]);
 
     const calculateFields = useCallback(
         ({ hours, rate, total_deductions, compensation, gross_wages }) => {
@@ -97,9 +98,10 @@ export const Table = ({
                 await patchWorkerData(recordId, changedData);
             } catch (error) {
                 console.error("Error patching data:", error);
+                showUniqueToast(error, false);
             }
         },
-        [calculateFields, patchWorkerData]
+        [calculateFields, patchWorkerData, showUniqueToast]
     );
 
     const transformHotelsData = useCallback(

@@ -340,6 +340,7 @@ export const Form = ({
                         hiddenIco={showPassIcoHidden}
                         visibleIco={ShowPassIcoVisible}
                         GetLogo={GetLogo}
+                        showUniqueToast={showUniqueToast}
                     />
                 )}
                 <PhotoLinkInput

@@ -12,7 +12,19 @@
 }
 
 editor-squiggler {
-display: none  !important;
+    display: none !important;
+}
+
+.Toastify__toast-container--bottom-left {
+    bottom: 0;
+}
+
+.Toastify__toast-container--bottom-center {
+    bottom: 0;
+}
+
+.Toastify__close-button > svg {
+    fill: var(--body-bg-color);
 }
 
 html,

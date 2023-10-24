@@ -43,13 +43,13 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
                 Cookies.set("userToken", response.data.token, {
                     expires: response.data.expiresToken / (60 * 60 * 24),
                 });
-                const { message, status } = response;
-                showUniqueToast(`${status} - ${message}`);
+
+                showUniqueToast("Successful login");
                 clearInput();
                 onLoginSuccess();
             }
         } catch (error) {
-            showUniqueToast("Chyba v přihlášení nebo hesle!", false);
+            showUniqueToast("Login or password wrong!", false);
         }
     };
 

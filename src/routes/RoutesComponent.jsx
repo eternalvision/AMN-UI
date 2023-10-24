@@ -91,6 +91,7 @@ export const RoutesComponent = ({
                             Loader={Loader}
                             patchWorkerData={patchWorkerData}
                             getWorkerData={getWorkerData}
+                            showUniqueToast={showUniqueToast}
                         />
                     }
                 />

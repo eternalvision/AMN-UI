@@ -50,12 +50,22 @@ export const ChangePasswordForm = ({
     selectedLang,
     updateUserPassword,
     GetLogo,
+    showUniqueToast,
 }) => {
     const [formData, setFormData] = useState({ password: "" });
     const [errors, setErrors] = useState({});
     const [visiblePassword, setVisiblePassword] = useState(false);
 
     const validation = ValidationHelper(LanguageSets, selectedLang).validate;
+
+    const {
+        textPassword,
+        showPassIcoHidden,
+        ShowPassIcoVisible,
+        textPasswordEdit,
+        passAlertOk,
+        passAlertBad,
+    } = LanguageSets.PasswordValidate()[selectedLang][0];
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -79,20 +89,15 @@ export const ChangePasswordForm = ({
 
         try {
             const result = await updateUserPassword(formData.password);
+            showUniqueToast(passAlertOk);
             if (result) {
                 window.location.reload();
             }
         } catch (error) {
             console.error(error);
+            showUniqueToast(passAlertBad, false);
         }
     };
-
-    const {
-        textPassword,
-        showPassIcoHidden,
-        ShowPassIcoVisible,
-        textPasswordEdit,
-    } = LanguageSets.PasswordValidate()[selectedLang][0];
 
     return (
         <>
