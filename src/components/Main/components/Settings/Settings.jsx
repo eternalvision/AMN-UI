@@ -37,11 +37,19 @@ export const Settings = ({
             const result = await updateUserFinanceInfo(formData);
 
             if (result) {
-                showUniqueToast(settingsAlert);
-                window.location.reload();
+                showUniqueToast(
+                    `${result.code}, ${result.status}, ${result.message}: ${settingsAlert}`
+                );
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             }
         } catch (error) {
-            showUniqueToast(settingsAlertBad, false);
+            console.error(error);
+            showUniqueToast(
+                `${error.code}, ${error.status}, ${error.message}: ${settingsAlertBad}`,
+                false
+            );
         }
     };
 

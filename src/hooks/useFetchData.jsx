@@ -25,10 +25,9 @@ export const useFetchData = ({ currentYear, month, asmisToken }) => {
                     });
                 }
             } catch (err) {
-                console.error(err);
                 setDataState((prevState) => ({
                     ...prevState,
-                    error: err.response.data,
+                    error: `Asmis: ${err.code}, ${err.message}`,
                 }));
             }
         };

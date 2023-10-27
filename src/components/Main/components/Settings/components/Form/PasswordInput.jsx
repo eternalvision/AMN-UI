@@ -89,13 +89,18 @@ export const ChangePasswordForm = ({
 
         try {
             const result = await updateUserPassword(formData.password);
-            showUniqueToast(passAlertOk);
-            if (result) {
+            showUniqueToast(
+                `${result.code}, ${result.status}, ${result.message}: ${passAlertOk}`
+            );
+            setTimeout(() => {
                 window.location.reload();
-            }
+            }, 2000);
         } catch (error) {
             console.error(error);
-            showUniqueToast(passAlertBad, false);
+            showUniqueToast(
+                `${error.code}, ${error.status}, ${error.message}: ${passAlertBad}`,
+                false
+            );
         }
     };
 

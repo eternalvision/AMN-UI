@@ -44,12 +44,17 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
                     expires: response.data.expiresToken / (60 * 60 * 24),
                 });
 
-                showUniqueToast("Successful login");
+                showUniqueToast(
+                    `${response.code}: ${response.status}: ${response.message}`
+                );
                 clearInput();
                 onLoginSuccess();
             }
         } catch (error) {
-            showUniqueToast("Login or password wrong!", false);
+            showUniqueToast(
+                `${error.code}: ${error.status}: ${error.message}`,
+                false
+            );
         }
     };
 

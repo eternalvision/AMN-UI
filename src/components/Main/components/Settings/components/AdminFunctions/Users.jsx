@@ -31,11 +31,16 @@ export const Users = ({
         const fetchUsers = async () => {
             try {
                 const allUsers = await getAllUsers();
-                showUniqueToast(usersAlert);
                 setUsers(allUsers);
+                showUniqueToast(
+                    `${allUsers.code}, ${allUsers.status}: ${usersAlert}`
+                );
             } catch (error) {
                 console.error(error);
-                showUniqueToast(usersAlertBad, false);
+                showUniqueToast(
+                    `${error.code}, ${error.status}, ${error.message}: ${usersAlertBad}`,
+                    false
+                );
             }
         };
 
@@ -44,13 +49,19 @@ export const Users = ({
 
     const handleDeleteUser = async (workerId) => {
         try {
-            await deleteUser(workerId);
-            showUniqueToast(usersDeleteAlert);
-            window.location.reload();
-            setUsers(users.filter((user) => user.workerId !== workerId));
+            const { code, message, status } = await deleteUser(workerId);
+            showUniqueToast(
+                `${code}, ${status}, ${message}:  ${usersDeleteAlert}`
+            );
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         } catch (error) {
             console.error(error);
-            showUniqueToast(usersDeleteBadAlert, false);
+            showUniqueToast(
+                `${error.code}, ${error.status}, ${error.message}: ${usersDeleteBadAlert}`,
+                false
+            );
         }
     };
 

@@ -39,14 +39,20 @@ export const Registration = ({
 
         try {
             const response = await registerUser(filteredFormData);
-
             if (response && response.data && response.data.token) {
-                showUniqueToast(RegistrationSuccessful);
-                window.location.reload();
+                showUniqueToast(
+                    `${response.code}, ${response.status}, ${response.message}: ${RegistrationSuccessful}`
+                );
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             }
         } catch (error) {
             console.error(error);
-            showUniqueToast(RegistrationError, false);
+            showUniqueToast(
+                `${error.code}, ${error.status}, ${error.message}: ${RegistrationError}`,
+                false
+            );
         }
     };
 

@@ -21,11 +21,12 @@ export const Employees = ({
     const { currentYear, setCurrentYear, month, setMonth } = useCurrentDate();
     const [lastSuccessfulTerm, setLastSuccessfulTerm] = useState(null);
 
-    const { items, nextMonthDataExists, prevMonthDataExists } = useFetchData({
-        currentYear,
-        month,
-        asmisToken: userData.asmisToken,
-    });
+    const { items, error, result, nextMonthDataExists, prevMonthDataExists } =
+        useFetchData({
+            currentYear,
+            month,
+            asmisToken: userData.asmisToken,
+        });
 
     const { text, calculationText, dataAlert, dataNullAlert } = Values[0];
     const data = items ? FilteredData({ items }) : null;
@@ -36,7 +37,9 @@ export const Employees = ({
 
     useEffect(() => {
         if (items && items.units.length > 0) {
-            showUniqueToast(`${dataAlert}: ${dateY}.${dateM}`);
+            showUniqueToast(
+                `Asmis: ${result.status},${result.statusText}: ${dataAlert}(${dateY}.${dateM})`
+            );
             setLastSuccessfulTerm(termin);
         } else if (lastSuccessfulTerm) {
             showUniqueToast(dataNullAlert, false);
@@ -46,6 +49,8 @@ export const Employees = ({
 
             setCurrentYear(lastSuccessfulYear);
             setMonth(lastSuccessfulMonth);
+        } else {
+            if (error.length > 0) showUniqueToast(error, false);
         }
     }, [
         items,
@@ -58,6 +63,8 @@ export const Employees = ({
         showUniqueToast,
         dataAlert,
         dataNullAlert,
+        error,
+        result,
     ]);
 
     return (

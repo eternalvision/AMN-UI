@@ -97,7 +97,7 @@ export const Table = ({
             try {
                 await patchWorkerData(recordId, changedData);
             } catch (error) {
-                console.error("Error patching data:", error);
+                console.log(error);
                 showUniqueToast(error, false);
             }
         },
