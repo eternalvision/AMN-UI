@@ -80,7 +80,7 @@ export const Login = ({ loginUser, onLoginSuccess }) => {
                 autoComplete="on"
                 className="Login-form">
                 <ul>
-                    <li>{renderField("email", "text", "Emeil")}</li>
+                    <li>{renderField("email", "text", "Email")}</li>
                     <li>
                         <ul>
                             <li>
